@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Froople';
+  src: url('/fonts/Froople.ttf') format('truetype'),
+       url('/fonts/Froople.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: normal;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Valores por defecto - se sobrescriben por ThemeProvider */
+  --background: #0f172a;
+  --navbar: #1e293b;
+  --navbar-line: #334155;
+  --foreground: #ffffff;
+  
+  /* Variables de tema - se actualizan dinámicamente */
+  --color-background: #0f172a;
+  --color-background-secondary: #1e293b;
+  --color-background-tertiary: #334155;
+  --color-primary: #8b5cf6;
+  --color-secondary: #ec4899;
+  --color-accent: #f59e0b;
+  --color-tertiary: #10b981;
+  --color-quaternary: #3b82f6;
+  --color-text: #ffffff;
+  --color-text-secondary: #e2e8f0;
+  --color-text-tertiary: #94a3b8;
+  
+  /* Mantener compatibilidad con código existente */
+  --purple: var(--color-primary);
+  --pink: var(--color-secondary);
+  --amber: var(--color-accent);
+  --emerald: var(--color-tertiary);
+  --blue: var(--color-quaternary);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-navbar: var(--navbar);
+  --color-navbar-line: var(--navbar-line);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-title: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-gc-grind: 'Froople', Arial, sans-serif;
+  --font-froople: 'Froople', Arial, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-x-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
