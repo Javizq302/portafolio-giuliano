@@ -99,8 +99,8 @@ export default function Navbar() {
 
   // Detectar sección activa basada en scroll
   useEffect(() => {
-    // Si estamos en la página /works, establecer Gallery como activo
-    if (pathname === '/works') {
+    // Si estamos en la página /works o /galeria, establecer Gallery como activo
+    if (pathname === '/works' || pathname === '/galeria') {
       const worksIndex = sections.indexOf('Gallery');
       if (worksIndex !== -1) {
         setActiveIndex(worksIndex);
@@ -285,25 +285,28 @@ export default function Navbar() {
         <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'py-3' : 'py-5'}`}>
           {/* Logo/Nombre */}
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
-              <Image
-                src="/images/LogoPortfolioNegro.png"
-                alt="Giuliano Medina Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+            <a href="/#inicio">
+              <div className="relative w-10 h-10 md:w-12 md:h-12 transition-opacity hover:opacity-70 active:opacity-50 cursor-pointer">
+                <Image
+                  src="/images/LogoPortfolioNegro.png"
+                  alt="Giuliano Medina Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </a>
             <div className="h-8 w-px bg-gradient-to-b from-transparent via-orange-300 to-transparent" />
-            <span
-              className="text-sm md:text-base font-medium hidden sm:block"
+            <a
+              href="/#inicio"
+              className="text-sm md:text-base font-medium hidden sm:block transition-opacity hover:opacity-70"
               style={{
                 fontFamily: 'var(--font-inter)',
                 color: '#000000',
               }}
             >
               Giuliano Medina
-            </span>
+            </a>
           </div>
 
           {/* Menú de navegación */}
@@ -326,13 +329,8 @@ export default function Navbar() {
                 }}
               />
               {sections.map((section, index) => {
-                // Determinar la URL según la sección
-                let href = `#${section.toLowerCase().replace(/\s+/g, '-')}`;
-                if (section === 'Gallery') {
-                  href = '/#works';
-                } else if (section === 'Inicio') {
-                  href = '/#inicio';
-                }
+                // Determinar la URL según la sección (siempre absoluta para funcionar desde cualquier página)
+                const href = `/#${sectionIds[index]}`;
 
                 // Determinar si este link está activo (hover manual o automático)
                 const isActive = hoveredIndex === index || (hoveredIndex === null && activeIndex === index);
