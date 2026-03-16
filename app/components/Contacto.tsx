@@ -18,7 +18,7 @@ export default function Contacto() {
       ),
       gradient: 'linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)',
       hoverGradient: 'linear-gradient(135deg, #FD1D1D 0%, #833AB4 50%, #FCB045 100%)',
-      link: 'https://instagram.com',
+      link: 'https://instagram.com/giulimr',
       description: 'Sígueme y ve mi trabajo diario',
       color: '#E4405F'
     },
@@ -32,7 +32,7 @@ export default function Contacto() {
       ),
       gradient: `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`,
       hoverGradient: `linear-gradient(135deg, ${theme.secondary} 0%, ${theme.primary} 100%)`,
-      link: 'mailto:tu-email@ejemplo.com',
+      link: 'mailto:visualideasolutions@gmail.com',
       description: 'Escríbeme directamente',
       color: theme.primary
     },
@@ -46,7 +46,7 @@ export default function Contacto() {
       ),
       gradient: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
       hoverGradient: 'linear-gradient(135deg, #128C7E 0%, #25D366 100%)',
-      link: 'https://wa.me/1234567890',
+      link: 'https://wa.me/18295390566',
       description: 'Chatea conmigo ahora',
       color: '#25D366'
     }

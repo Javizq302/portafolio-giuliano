@@ -8,17 +8,17 @@ export default function Brands() {
   const [isAnyHovered, setIsAnyHovered] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const theme = getThemeColors();
-  
+
   const brands = [
-    { id: 1, name: 'Changan', logo: '/images/brands/CHANGAN_UNI_Series_Horizontal_Logo_Blue.png', alt: 'Changan' },
-    { id: 2, name: 'Humano Seguros', logo: '/images/brands/HumanoSeguros-e1665503457527.png', alt: 'Humano Seguros' },
-    { id: 3, name: 'Chef', logo: '/images/brands/logo_chef_nuevo.png', alt: 'Chef' },
-    { id: 4, name: 'REMAX', logo: '/images/brands/REMAX-Emblem.png', alt: 'REMAX' },
-    { id: 5, name: 'Samsung', logo: '/images/brands/Samsung_Electronics-Logo.wine.png', alt: 'Samsung' },
-    { id: 6, name: 'Supermercado Nacional', logo: '/images/brands/Supermercado-Nacional-Logo.png', alt: 'Supermercado Nacional' },
-    { id: 7, name: 'Lanco', logo: '/images/brands/logo-lanco.png', alt: 'Lanco' },
-    { id: 8, name: 'Patrón Tequila', logo: '/images/brands/logo-patron.png', alt: 'Patrón Tequila' },
-    { id: 9, name: 'Ccn', logo: '/images/brands/logo-ccn.png', alt: 'CNN' },
+    { id: 1, name: 'Changan', logo: '/images/brands/Changan.png', alt: 'Changan' },
+    { id: 2, name: 'Humano Seguros', logo: '/images/brands/HumanoSeguro.png', alt: 'Humano Seguros' },
+    { id: 3, name: 'Chef', logo: '/images/brands/ElChef.png', alt: 'Chef' },
+    { id: 4, name: 'REMAX', logo: '/images/brands/Remax.png', alt: 'REMAX' },
+    { id: 5, name: 'Samsung', logo: '/images/brands/Samsung.png', alt: 'Samsung' },
+    { id: 6, name: 'Supermercado Nacional', logo: '/images/brands/SupermercadoNacional.png', alt: 'Supermercado Nacional' },
+    { id: 7, name: 'Lanco', logo: '/images/brands/Lanco.png', alt: 'Lanco' },
+    { id: 8, name: 'Patrón Tequila', logo: '/images/brands/Patron.png', alt: 'Patrón Tequila' },
+    { id: 9, name: 'Ccn', logo: '/images/brands/Ccn.png', alt: 'CNN' },
   ];
 
   // Duplicar los logos para crear un loop infinito suave
@@ -47,7 +47,7 @@ export default function Brands() {
   }, []);
 
   return (
-    <section 
+    <section
       id="marcas"
       className="py-2 md:py-3 lg:py-4 relative overflow-hidden brands-section"
       style={{ background: `linear-gradient(35deg, #C5D0D9 0%, #EBEFF2 50%, #A3B2BF 100%)` }}
@@ -55,31 +55,31 @@ export default function Brands() {
       {/* Sombras internas superior e inferior */}
       <div className="brands-inner-shadow-top"></div>
       <div className="brands-inner-shadow-bottom"></div>
-      
-      
+
+
       {/* Carrusel infinito de logos - ancho completo */}
       <div className="relative overflow-hidden w-full">
         {/* Correa única - se mueve de izquierda a derecha */}
         <div className="flex gap-12 md:gap-16 lg:gap-20 items-center">
-          <div 
+          <div
             className={`flex gap-12 md:gap-16 lg:gap-20 animate-scroll-left items-center ${isAnyHovered ? 'animate-paused' : ''}`}
           >
             {duplicatedBrands.map((brand, index) => (
-              <BrandLogo 
-                key={`left-${brand.id}-${index}`} 
+              <BrandLogo
+                key={`left-${brand.id}-${index}`}
                 brand={brand}
                 onHoverStart={handleHoverStart}
                 onHoverEnd={handleHoverEnd}
               />
             ))}
           </div>
-          <div 
+          <div
             className={`flex gap-12 md:gap-16 lg:gap-20 animate-scroll-left items-center ${isAnyHovered ? 'animate-paused' : ''}`}
             aria-hidden="true"
           >
             {duplicatedBrands.map((brand, index) => (
-              <BrandLogo 
-                key={`left-duplicate-${brand.id}-${index}`} 
+              <BrandLogo
+                key={`left-duplicate-${brand.id}-${index}`}
                 brand={brand}
                 onHoverStart={handleHoverStart}
                 onHoverEnd={handleHoverEnd}
@@ -148,11 +148,11 @@ export default function Brands() {
   );
 }
 
-function BrandLogo({ 
-  brand, 
+function BrandLogo({
+  brand,
   onHoverStart,
   onHoverEnd
-}: { 
+}: {
   brand: { id: number; name: string; logo: string; alt: string };
   onHoverStart: () => void;
   onHoverEnd: () => void;
@@ -180,7 +180,7 @@ function BrandLogo({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div 
+      <div
         className="relative w-28 h-14 md:w-36 md:h-16 lg:w-40 lg:h-20 transition-all duration-500 ease-out"
         style={{
           transform: isHovered ? 'scale(1.15) translateY(-8px)' : 'scale(1) translateY(0)',
