@@ -464,7 +464,7 @@ export default function Hero() {
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden z-10">
                 <div className="absolute inset-0" style={{ top: '-15%', bottom: '0' }}>
                   <Image
-                    src="/images/hero/FotoGiulianoSinFondoGrain.png"
+                    src="/images/hero/FotoGiulianoSinFondoGrain.webp"
                     alt="Giuliano Medina - Filmmaker"
                     fill
                     className="object-cover"
@@ -495,7 +495,7 @@ export default function Hero() {
                 <div className="relative w-full h-full" style={{ aspectRatio: '3/4' }}>
                   <div className="absolute inset-0" style={{ top: '-15%', bottom: '0' }}>
                     <Image
-                      src="/images/hero/FotoGiulianoSinFondoGrain.png"
+                      src="/images/hero/FotoGiulianoSinFondoGrain.webp"
                       alt=""
                       fill
                       className="object-cover"

@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
+
 // ────────────────────────────────
 // Media item type
 // ────────────────────────────────
@@ -26,13 +28,26 @@ const categorias = [
     color: '#3b82f6',
     folder: 'colorlab',
     media: [
-      ...Array.from({ length: 15 }, (_, i) => ({
-        id: i + 1,
-        src: `/gallery/colorlab/image-${i + 1}-colorlab.png`,
-        type: 'image' as const,
-      })),
-      { id: 16, src: '/gallery/colorlab/gif-1-colorlab.mp4', type: 'gif' as const },
-      { id: 17, src: '/gallery/colorlab/gif-2-colorlab.mp4', type: 'gif' as const },
+      // ── Row 1: c1-i1, c2-i1, c3-i1, c4-i1 ──
+      { id: 1, src: `${CDN}/galeria/colorlab/image-colorlab-c1-i1.webp`, type: 'image' as const },
+      { id: 2, src: `${CDN}/galeria/colorlab/image-colorlab-c2-i1.webp`, type: 'image' as const },
+      { id: 3, src: `${CDN}/galeria/colorlab/image-colorlab-c3-i1.webp`, type: 'image' as const },
+      { id: 4, src: `${CDN}/galeria/colorlab/image-colorlab-c4-i1.webp`, type: 'image' as const },
+      // ── Row 2: c1-i2, c2-i2, c3-i2, c4-i2 ──
+      { id: 5, src: `${CDN}/galeria/colorlab/image-colorlab-c1-i2.webp`, type: 'image' as const },
+      { id: 6, src: `${CDN}/galeria/colorlab/image-colorlab-c2-i2.webp`, type: 'image' as const },
+      { id: 7, src: `${CDN}/galeria/colorlab/image-colorlab-c3-i2.webp`, type: 'image' as const },
+      { id: 8, src: `${CDN}/galeria/colorlab/image-colorlab-c4-i2.webp`, type: 'image' as const },
+      // ── Row 3: c1-i3, c2-i3, c3-i3, c4-i3 ──
+      { id: 9, src: `${CDN}/galeria/colorlab/image-colorlab-c1-i3.webp`, type: 'image' as const },
+      { id: 10, src: `${CDN}/galeria/colorlab/gif-colorlab-c2-i3.mp4`, type: 'gif' as const },
+      { id: 11, src: `${CDN}/galeria/colorlab/image-colorlab-c3-i3.webp`, type: 'image' as const },
+      { id: 12, src: `${CDN}/galeria/colorlab/image-colorlab-c4-i3.webp`, type: 'image' as const },
+      // ── Row 4 (horizontal): c5-i1, c5-i2, c5-i3, c5-i4 ──
+      { id: 13, src: `${CDN}/galeria/colorlab/image-colorlab-c5-i1.webp`, type: 'image' as const },
+      { id: 14, src: `${CDN}/galeria/colorlab/image-colorlab-c5-i2.webp`, type: 'image' as const },
+      { id: 15, src: `${CDN}/galeria/colorlab/gif-colorlab-c5-i3.mp4`, type: 'gif' as const },
+      { id: 16, src: `${CDN}/galeria/colorlab/image-colorlab-c5-i4.webp`, type: 'image' as const },
     ] as MediaItem[],
   },
   {
@@ -43,12 +58,23 @@ const categorias = [
     color: '#8b5cf6',
     folder: 'musicvisuals',
     media: [
-      ...Array.from({ length: 13 }, (_, i) => ({
-        id: i + 1,
-        src: `/gallery/musicvisuals/image-${i + 1}-musicvisuals.png`,
-        type: 'image' as const,
-      })),
-      { id: 14, src: '/gallery/musicvisuals/video-1-musicvisuals.mp4', type: 'video' as const },
+      { id: 1, src: `${CDN}/galeria/musicvisuals/image-1-musicvisuals.webp`, type: 'image' as const },
+      { id: 2, src: `${CDN}/galeria/musicvisuals/image-2-musicvisuals.webp`, type: 'image' as const },
+      { id: 3, src: `${CDN}/galeria/musicvisuals/image-3-musicvisuals.webp`, type: 'image' as const },
+      { id: 5, src: `${CDN}/galeria/musicvisuals/image-5-musicvisuals.webp`, type: 'image' as const },
+      { id: 6, src: `${CDN}/galeria/musicvisuals/image-6-musicvisuals.webp`, type: 'image' as const },
+      { id: 7, src: `${CDN}/galeria/musicvisuals/image-7-musicvisuals.webp`, type: 'image' as const },
+      { id: 8, src: `${CDN}/galeria/musicvisuals/image-8-musicvisuals.webp`, type: 'image' as const },
+      { id: 9, src: `${CDN}/galeria/musicvisuals/image-9-musicvisuals.webp`, type: 'image' as const },
+      { id: 10, src: `${CDN}/galeria/musicvisuals/image-10-musicvisuals.webp`, type: 'image' as const },
+      { id: 11, src: `${CDN}/galeria/musicvisuals/image-11-musicvisuals.webp`, type: 'image' as const },
+      { id: 12, src: `${CDN}/galeria/musicvisuals/image-12-musicvisuals.webp`, type: 'image' as const },
+      { id: 13, src: `${CDN}/galeria/musicvisuals/image-13-musicvisuals.webp`, type: 'image' as const },
+      { id: 14, src: `${CDN}/galeria/musicvisuals/image-14-musicvisuals.webp`, type: 'image' as const },
+      { id: 15, src: `${CDN}/galeria/musicvisuals/video-1-musicvisuals.mp4`, type: 'video' as const },
+      { id: 16, src: `${CDN}/galeria/musicvisuals/video-2-musicvisuals.mp4`, type: 'video' as const },
+      { id: 17, src: `${CDN}/galeria/musicvisuals/video-3-musicvisuals.mp4`, type: 'video' as const },
+      { id: 18, src: `${CDN}/galeria/musicvisuals/video-5-musicvisuals.mp4`, type: 'video' as const },
     ] as MediaItem[],
   },
   {
@@ -61,18 +87,21 @@ const categorias = [
     media: [
       ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => ({
         id: i,
-        src: `/gallery/personalbrands/image-${i}-personalbrands.jpg`,
+        src: `${CDN}/galeria/personalbrands/image-${i}-personalbrands.webp`,
         type: 'image' as const,
       })),
-      { id: 11, src: '/gallery/personalbrands/image-11-personalbrands.png', type: 'image' as const },
-      { id: 12, src: '/gallery/personalbrands/video-1-personalbrands.mp4', type: 'video' as const },
-      { id: 13, src: '/gallery/personalbrands/video-2-personalbrands.mp4', type: 'video' as const },
-      { id: 14, src: '/gallery/personalbrands/video-3-personalbrands.mp4', type: 'video' as const },
-      { id: 15, src: '/gallery/personalbrands/video-4-personalbrands.mp4', type: 'video' as const },
-      { id: 16, src: '/gallery/personalbrands/video-5-personalbrands.MP4', type: 'video' as const },
-      { id: 17, src: '/gallery/personalbrands/video-6-personalbrands.MP4', type: 'video' as const },
-      { id: 18, src: '/gallery/personalbrands/video-7-personalbrands.mp4', type: 'video' as const },
-      { id: 19, src: '/gallery/personalbrands/video-8-personalbrands.mp4.mp4', type: 'video' as const },
+      { id: 11, src: `${CDN}/galeria/personalbrands/image-11-personalbrands.webp`, type: 'image' as const },
+      { id: 12, src: `${CDN}/galeria/personalbrands/video-1-personalbrands.mp4`, type: 'video' as const },
+      { id: 13, src: `${CDN}/galeria/personalbrands/video-2-personalbrands.MP4`, type: 'video' as const },
+      { id: 14, src: `${CDN}/galeria/personalbrands/video-3-personalbrands.mp4`, type: 'video' as const },
+      { id: 15, src: `${CDN}/galeria/personalbrands/video-4-personalbrands.mp4`, type: 'video' as const },
+      { id: 16, src: `${CDN}/galeria/personalbrands/video-5-personalbrands.MP4`, type: 'video' as const },
+      { id: 17, src: `${CDN}/galeria/personalbrands/video-6-personalbrands.MP4`, type: 'video' as const },
+      { id: 18, src: `${CDN}/galeria/personalbrands/video-7-personalbrands.mp4`, type: 'video' as const },
+      { id: 19, src: `${CDN}/galeria/personalbrands/video-8-personalbrands.mp4`, type: 'video' as const },
+      { id: 20, src: `${CDN}/galeria/personalbrands/image-12-personalbrands.webp`, type: 'image' as const },
+      { id: 21, src: `${CDN}/galeria/personalbrands/gif-13-personalbrands.mp4`, type: 'gif' as const },
+      { id: 22, src: `${CDN}/galeria/personalbrands/gif-14-personalbrands.mp4`, type: 'gif' as const },
     ] as MediaItem[],
   },
   {
@@ -83,20 +112,19 @@ const categorias = [
     color: '#10b981',
     folder: 'livemoments',
     media: [
-      { id: 1, src: '/gallery/livemoments/image-1-livemoments.jpg', type: 'image' as const },
-      { id: 2, src: '/gallery/livemoments/image-2-livemoments.jpg.jpg', type: 'image' as const },
-      { id: 3, src: '/gallery/livemoments/image-3-livemoments.jpg.JPG', type: 'image' as const },
-      { id: 4, src: '/gallery/livemoments/image-4-livemoments.jpg.JPG', type: 'image' as const },
-      { id: 5, src: '/gallery/livemoments/image-5-livemoments.jpg.JPG', type: 'image' as const },
-      { id: 6, src: '/gallery/livemoments/image-6-livemoments.jpg.JPG', type: 'image' as const },
-      { id: 7, src: '/gallery/livemoments/image-7-livemoments.jpg.png', type: 'image' as const },
-      { id: 8, src: '/gallery/livemoments/gif-1-livemoments.mp4', type: 'gif' as const },
-      { id: 9, src: '/gallery/livemoments/gif-2-livemoments.mp4', type: 'gif' as const },
-      { id: 10, src: '/gallery/livemoments/gif-3-livemoments.mp4', type: 'gif' as const },
-      { id: 11, src: '/gallery/livemoments/gif-4-livemoments.mp4', type: 'gif' as const },
-      { id: 12, src: '/gallery/livemoments/video-1-livemoments.MP4', type: 'video' as const },
-      { id: 13, src: '/gallery/livemoments/video-2-livemoments.MP4', type: 'video' as const },
-      { id: 14, src: '/gallery/livemoments/video-3-livemoments.mp4', type: 'video' as const },
+      { id: 1, src: `${CDN}/galeria/livemoments/image-1-livemoments.webp`, type: 'image' as const },
+      { id: 2, src: `${CDN}/galeria/livemoments/image-2-livemoments.webp`, type: 'image' as const },
+      { id: 3, src: `${CDN}/galeria/livemoments/image-3-livemoments.webp`, type: 'image' as const },
+      { id: 4, src: `${CDN}/galeria/livemoments/image-4-livemoments.webp`, type: 'image' as const },
+      { id: 5, src: `${CDN}/galeria/livemoments/image-5-livemoments.webp`, type: 'image' as const },
+      { id: 6, src: `${CDN}/galeria/livemoments/image-6-livemoments.webp`, type: 'image' as const },
+      { id: 8, src: `${CDN}/galeria/livemoments/gif-1-livemoments.mp4`, type: 'gif' as const },
+      { id: 9, src: `${CDN}/galeria/livemoments/gif-2-livemoments.mp4`, type: 'gif' as const },
+      { id: 10, src: `${CDN}/galeria/livemoments/gif-3-livemoments.mp4`, type: 'gif' as const },
+      { id: 11, src: `${CDN}/galeria/livemoments/gif-4-livemoments.mp4`, type: 'gif' as const },
+      { id: 12, src: `${CDN}/galeria/livemoments/video-1-livemoments.MP4`, type: 'video' as const },
+      { id: 13, src: `${CDN}/galeria/livemoments/video-2-livemoments.MP4`, type: 'video' as const },
+      { id: 14, src: `${CDN}/galeria/livemoments/video-3-livemoments.mp4`, type: 'video' as const },
     ] as MediaItem[],
   },
   {
@@ -107,15 +135,21 @@ const categorias = [
     color: '#f59e0b',
     folder: 'foodmood',
     media: [
-      { id: 1, src: '/gallery/foodmood/image-1-foodmood.JPG', type: 'image' as const },
-      { id: 2, src: '/gallery/foodmood/image-2-foodmood.JPG', type: 'image' as const },
-      { id: 3, src: '/gallery/foodmood/image-4-foodmood.JPG', type: 'image' as const },
-      { id: 4, src: '/gallery/foodmood/image-5-foodmood.PNG', type: 'image' as const },
-      { id: 5, src: '/gallery/foodmood/video-1-foodmood.MP4', type: 'video' as const },
-      { id: 6, src: '/gallery/foodmood/video-2-foodmood.mp4', type: 'video' as const },
-      { id: 7, src: '/gallery/foodmood/video-3-foodmood.mp4', type: 'video' as const },
-      { id: 8, src: '/gallery/foodmood/video-4-foodmood.mp4', type: 'video' as const },
-      { id: 9, src: '/gallery/foodmood/video-5-foodmood.MP4', type: 'video' as const },
+      { id: 1, src: `${CDN}/galeria/foodmood/image-11-foodmood.webp`, type: 'image' as const },
+      { id: 2, src: `${CDN}/galeria/foodmood/image-12-foodmood.webp`, type: 'image' as const },
+      { id: 3, src: `${CDN}/galeria/foodmood/image-5-foodmood.webp`, type: 'image' as const },
+      { id: 4, src: `${CDN}/galeria/foodmood/image-6-foodmood.webp`, type: 'image' as const },
+      { id: 5, src: `${CDN}/galeria/foodmood/image-7-foodmood.webp`, type: 'image' as const },
+      { id: 6, src: `${CDN}/galeria/foodmood/image-8-foodmood.webp`, type: 'image' as const },
+      { id: 7, src: `${CDN}/galeria/foodmood/image-9-foodmood.webp`, type: 'image' as const },
+      { id: 8, src: `${CDN}/galeria/foodmood/image-10-foodmood.webp`, type: 'image' as const },
+      { id: 9, src: `${CDN}/galeria/foodmood/image-2-foodmood.webp`, type: 'image' as const },
+      { id: 10, src: `${CDN}/galeria/foodmood/image-4-foodmood.webp`, type: 'image' as const },
+      { id: 11, src: `${CDN}/galeria/foodmood/video-1-foodmood.MP4`, type: 'video' as const },
+      { id: 12, src: `${CDN}/galeria/foodmood/video-2-foodmood.mp4`, type: 'video' as const },
+      { id: 13, src: `${CDN}/galeria/foodmood/video-3-foodmood.mp4`, type: 'video' as const },
+      { id: 14, src: `${CDN}/galeria/foodmood/video-4-foodmood.mp4`, type: 'video' as const },
+      { id: 15, src: `${CDN}/galeria/foodmood/video-5-foodmood.MP4`, type: 'video' as const },
     ] as MediaItem[],
   },
 ];
@@ -129,41 +163,172 @@ const categorias = [
 // ║                    (basado en el orden del array 'media' de arriba,    ║
 // ║                     empezando desde 0)                                 ║
 // ║    - layout: controla el aspecto del collage para esa categoría        ║
-// ║              'default'    → primera imagen ancha, el resto cuadradas   ║
-// ║              'vertical'   → todas las imágenes en formato vertical     ║
-// ║              'horizontal' → todas las imágenes en formato horizontal   ║
-// ║              'square'     → todas las imágenes en formato cuadrado     ║
+// ║              'default'         → primera imagen ancha, resto cuadradas ║
+// ║              'default-rotated' → 2 cuadradas izq + 1 vertical der     ║
+// ║              'vertical'        → todas en formato vertical             ║
+// ║              'horizontal'      → todas en formato horizontal           ║
+// ║              'square'          → todas en formato cuadrado             ║
 // ║                                                                        ║
 // ║  Si mediaIndices está vacío [], se toman las primeras 'previewCount'   ║
 // ║  fotos automáticamente.                                                ║
 // ╚══════════════════════════════════════════════════════════════════════════╝
-const PREVIEW_COLLAGE_CONFIG: Record<string, { previewCount: number; mediaIndices: number[]; layout: 'default' | 'vertical' | 'horizontal' | 'square' }> = {
+const PREVIEW_COLLAGE_CONFIG: Record<string, { previewCount: number; mediaIndices: number[]; layout: 'default' | 'default-rotated' | 'vertical' | 'horizontal' | 'square' }> = {
   colorlab: {
     previewCount: 2,          // Cantidad de fotos en el collage
-    mediaIndices: [4, 1],  // Índices: image-1, image-2, image-3
+    mediaIndices: [3, 0],  // Índices: image-1, image-2, image-3
     layout: 'horizontal',
   },
   musicvisuals: {
     previewCount: 1,
-    mediaIndices: [0],
+    mediaIndices: [12],
     layout: 'square',
   },
   personalbrands: {
     previewCount: 3,
     mediaIndices: [4, 1, 2],
-    layout: 'default',
+    layout: 'default-rotated',
   },
   livemoments: {
     previewCount: 1,
-    mediaIndices: [7],
+    mediaIndices: [6],
     layout: 'vertical',
   },
   foodmood: {
-    previewCount: 1,
-    mediaIndices: [3],
-    layout: 'vertical',
+    previewCount: 4,
+    mediaIndices: [3, 6, 8, 9],
+    layout: 'square',
   },
 };
+
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  CONFIGURACIÓN DE FRAME DE PORTADA PARA VIDEOS (Music Visuals)           ║
+// ║                                                                          ║
+// ║  Asigna el segundo del video que se mostrará como portada.               ║
+// ║  La key es el src del video, el value es el tiempo en segundos.          ║
+// ║  Ejemplo: 15 = segundo 0:15 del video.                                   ║
+// ║  Si el valor es 0, el video mostrará el primer frame por defecto.        ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+const VIDEO_POSTER_CONFIG: Record<string, number> = {
+  // ── Music Visuals ──
+  [`${CDN}/galeria/musicvisuals/video-1-musicvisuals.mp4`]: 24.49,
+  [`${CDN}/galeria/musicvisuals/video-2-musicvisuals.mp4`]: 7.89,
+  [`${CDN}/galeria/musicvisuals/video-3-musicvisuals.mp4`]: 31,
+  [`${CDN}/galeria/musicvisuals/video-4-musicvisuals.mp4`]: 16,
+  // ── Personal Brands ──
+  [`${CDN}/galeria/personalbrands/video-1-personalbrands.mp4`]: 13,
+  [`${CDN}/galeria/personalbrands/video-2-personalbrands.MP4`]: 3.5,
+  [`${CDN}/galeria/personalbrands/video-3-personalbrands.mp4`]: 5,
+  [`${CDN}/galeria/personalbrands/video-4-personalbrands.mp4`]: 5,
+  [`${CDN}/galeria/personalbrands/video-5-personalbrands.MP4`]: 7,
+  [`${CDN}/galeria/personalbrands/video-6-personalbrands.MP4`]: 4,
+  [`${CDN}/galeria/personalbrands/video-7-personalbrands.mp4`]: 8,
+  [`${CDN}/galeria/personalbrands/video-8-personalbrands.mp4`]: 11,
+  // ── Live Moments ──
+  [`${CDN}/galeria/livemoments/video-1-livemoments.MP4`]: 51,
+  [`${CDN}/galeria/livemoments/video-2-livemoments.MP4`]: 6.4,
+  [`${CDN}/galeria/livemoments/video-3-livemoments.mp4`]: 0.6,
+  // ── Food Mood ──
+  [`${CDN}/galeria/foodmood/video-1-foodmood.MP4`]: 1.8,
+  [`${CDN}/galeria/foodmood/video-2-foodmood.mp4`]: 1,
+  [`${CDN}/galeria/foodmood/video-3-foodmood.mp4`]: 1.3,
+  [`${CDN}/galeria/foodmood/video-4-foodmood.mp4`]: 8.5,
+  [`${CDN}/galeria/foodmood/video-5-foodmood.MP4`]: 1,
+};
+
+// ────────────────────────────────
+// Imágenes excluidas de la galería (solo portada/preview)
+// Estas imágenes aparecen en el hero pero NO en el grid de la galería
+// ────────────────────────────────
+const GALLERY_EXCLUDE_SRCS = new Set([
+  `${CDN}/galeria/musicvisuals/image-14-musicvisuals.webp`,
+  `${CDN}/galeria/livemoments/gif-1-livemoments.mp4`,
+]);
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Color Lab — orden personalizado de imágenes para la galería modal
+// ──────────────────────────────────────────────────────────────────────────────
+// Al hacer click en cualquier imagen de Color Lab y abrir el lightbox,
+// las flechas de navegación seguirán este orden de IDs.
+// ──────────────────────────────────────────────────────────────────────────────
+const COLORLAB_GALLERY_ORDER: number[] = [1, 5, 9, 2, 6, 10, 3, 7, 11, 4, 8, 12, 13, 14, 15, 16];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Music Visuals — orden personalizado para galerías separadas (videos / imágenes)
+// ──────────────────────────────────────────────────────────────────────────────
+// Music Visuals tiene DOS galerías independientes en el lightbox:
+//   1. Galería de Videos  → al hacer click en un video, solo navegas entre videos
+//   2. Galería de Imágenes → al hacer click en una imagen, solo navegas entre imágenes
+// Cada array define el orden de IDs para su galería respectiva.
+// ──────────────────────────────────────────────────────────────────────────────
+const MV_VIDEO_ORDER: number[] = [15, 16, 17, 18];
+const MV_IMAGE_ORDER: number[] = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Personal Brands — orden personalizado para galerías separadas (videos / imágenes)
+// ──────────────────────────────────────────────────────────────────────────────
+// Mismo sistema que Music Visuals: DOS galerías independientes en el lightbox.
+// GIFs se incluyen en la galería de imágenes.
+// ──────────────────────────────────────────────────────────────────────────────
+const PB_VIDEO_ORDER: number[] = [12, 13, 14, 15, 16, 17, 18, 19];
+const PB_IMAGE_ORDER: number[] = [1, 2, 3, 4, 10, 22, 6, 5, 7, 8, 9, 21, 11];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Personal Brands — distribución de imágenes por columna
+// ──────────────────────────────────────────────────────────────────────────────
+// Cada sub-array contiene los ÍNDICES de las imágenes (dentro del array de
+// imágenes filtrado, no del media completo) que van en esa columna.
+// Ajusta la distribución para balancear la altura de las columnas.
+// El layout usa justify-between, así que columnas más cortas tendrán
+// un poco más de espacio entre imágenes — se ve como parte del diseño.
+// ──────────────────────────────────────────────────────────────────────────────
+const PB_IMAGE_COLUMNS: number[][] = [
+  [0, 9, 6],   // Columna 1
+  [1, 13, 7],   // Columna 2
+  [2, 5, 8],   // Columna 3
+  [3, 4, 12, 10],  // Columna 4
+];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Live Moments — orden personalizado para galerías separadas (videos / imágenes)
+// ──────────────────────────────────────────────────────────────────────────────
+// GIFs se incluyen en la galería de imágenes (se tratan igual).
+// ──────────────────────────────────────────────────────────────────────────────
+const LM_VIDEO_ORDER: number[] = [12, 13, 14];
+const LM_IMAGE_ORDER: number[] = [1, 2, 3, 4, 5, 6, 9, 10, 11];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Live Moments — distribución de imágenes+GIFs por columna (3 columnas)
+// ──────────────────────────────────────────────────────────────────────────────
+// Diseño "Staggered Mosaic": 3 columnas escalonadas para crear un efecto
+// dinámico con todas las imágenes verticales. Los índices son posiciones dentro
+// del array filtrado de images+gifs (no IDs del media).
+// Col 1: arranca con padding superior para crear efecto escalonado
+// Col 2: empieza sin padding (la más alta)
+// Col 3: padding medio
+// ──────────────────────────────────────────────────────────────────────────────
+const LM_IMAGE_COLUMNS: number[][] = [
+  [0, 3, 6],      // Columna 1 (3 items)
+  [1, 4, 7],      // Columna 2 (3 items)
+  [2, 5, 8],      // Columna 3 (3 items)
+];
+// Padding top en px para cada columna (efecto cascada)
+const LM_COLUMN_OFFSETS: number[] = [60, 0, 30];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Food Mood — orden personalizado para galerías separadas (videos / imágenes)
+// ──────────────────────────────────────────────────────────────────────────────
+const FM_VIDEO_ORDER: number[] = [12, 11, 15, 13, 14];
+const FM_IMAGE_ORDER: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Food Mood — distribución de imágenes por filas horizontales
+// ──────────────────────────────────────────────────────────────────────────────
+// Row 1: 4 imágenes | Row 2: 4 imágenes | Row 3: 2 imágenes centradas
+const FM_IMAGE_ROWS: number[][] = [
+  [0, 1, 2, 3],   // Fila 1 (4 items)
+  [4, 5, 6, 7],   // Fila 2 (4 items)
+  [8, 9],          // Fila 3 (2 items, centradas)
+];
 
 // ────────────────────────────────
 // Helper
@@ -183,12 +348,75 @@ export default function GaleriaPage() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
+  const [modalGalleryType, setModalGalleryType] = useState<'all' | 'videos' | 'images'>('all');
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [carouselOffset, setCarouselOffset] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const previewVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const cat = categorias[activeSection];
+
+  // ── Compute reordered media list for the modal ──
+  // Color Lab: custom order for all items
+  // Music Visuals: separate galleries for videos and images, each with custom order
+  const modalMedia = (() => {
+    const byId = new Map(cat.media.map((m) => [m.id, m]));
+    if (cat.id === 'colorlab') {
+      return COLORLAB_GALLERY_ORDER
+        .filter((id) => byId.has(id))
+        .map((id) => byId.get(id)!);
+    }
+    if (cat.id === 'musicvisuals') {
+      if (modalGalleryType === 'videos') {
+        return MV_VIDEO_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+      if (modalGalleryType === 'images') {
+        return MV_IMAGE_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+    }
+    if (cat.id === 'personalbrands') {
+      if (modalGalleryType === 'videos') {
+        return PB_VIDEO_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+      if (modalGalleryType === 'images') {
+        return PB_IMAGE_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+    }
+    if (cat.id === 'livemoments') {
+      if (modalGalleryType === 'videos') {
+        return LM_VIDEO_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+      if (modalGalleryType === 'images') {
+        return LM_IMAGE_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+    }
+    if (cat.id === 'foodmood') {
+      if (modalGalleryType === 'videos') {
+        return FM_VIDEO_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+      if (modalGalleryType === 'images') {
+        return FM_IMAGE_ORDER
+          .filter((id) => byId.has(id))
+          .map((id) => byId.get(id)!);
+      }
+    }
+    return cat.media;
+  })();
 
   // ── Switch section with transition ──
   const switchSection = useCallback(
@@ -197,6 +425,7 @@ export default function GaleriaPage() {
       setIsTransitioning(true);
       setTimeout(() => {
         setActiveSection(index);
+        setCarouselOffset(0);
         setTimeout(() => setIsTransitioning(false), 50);
       }, 350);
     },
@@ -219,7 +448,8 @@ export default function GaleriaPage() {
   }, []);
 
   // ── Modal functions ──
-  const openModal = (idx: number) => {
+  const openModal = (idx: number, galleryType: 'all' | 'videos' | 'images' = 'all') => {
+    setModalGalleryType(galleryType);
     setModalIndex(idx);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
@@ -233,13 +463,13 @@ export default function GaleriaPage() {
 
   const nextItem = useCallback(() => {
     if (videoRef.current) videoRef.current.pause();
-    setModalIndex((prev) => (prev + 1) % cat.media.length);
-  }, [cat.media.length]);
+    setModalIndex((prev) => (prev + 1) % modalMedia.length);
+  }, [modalMedia.length]);
 
   const prevItem = useCallback(() => {
     if (videoRef.current) videoRef.current.pause();
-    setModalIndex((prev) => (prev - 1 + cat.media.length) % cat.media.length);
-  }, [cat.media.length]);
+    setModalIndex((prev) => (prev - 1 + modalMedia.length) % modalMedia.length);
+  }, [modalMedia.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -444,19 +674,32 @@ export default function GaleriaPage() {
             <div
               className={`lg:w-[50%] w-full transition-all duration-600 ease-out ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
             >
-              <div className={`${collageConfig?.layout === 'vertical' ? 'flex justify-center' : 'grid grid-cols-2'} gap-3 max-w-lg ml-auto`}>
+              <div className={`${collageConfig?.layout === 'vertical'
+                ? 'flex justify-center'
+                : collageConfig?.layout === 'square' && previewItems.length === 1
+                  ? 'flex items-center justify-center h-full'
+                  : collageConfig?.layout === 'default-rotated'
+                    ? 'grid grid-cols-2 grid-rows-2'
+                    : 'grid grid-cols-2'
+                } gap-3 max-w-lg ml-auto`}>
                 {previewItems.map((item, idx) => (
                   <div
                     key={`${cat.id}-preview-${idx}`}
                     className={`relative rounded-2xl overflow-hidden cursor-pointer group ${collageConfig?.layout === 'vertical'
-                      ? 'w-72 aspect-[9/16]'
+                      ? 'w-80 aspect-[9/16]'
                       : collageConfig?.layout === 'horizontal'
                         ? 'col-span-2 aspect-[16/9]'
                         : collageConfig?.layout === 'square'
-                          ? 'aspect-square'
-                          : idx === 0
-                            ? 'col-span-2 aspect-[16/9]'
+                          ? previewItems.length === 1
+                            ? 'w-80 md:w-96 aspect-square'
                             : 'aspect-square'
+                          : collageConfig?.layout === 'default-rotated'
+                            ? idx === 0
+                              ? 'aspect-[11/23]'
+                              : 'aspect-square'
+                            : idx === 0
+                              ? 'col-span-2 aspect-[16/9]'
+                              : 'aspect-square'
                       }`}
                     onClick={() => {
                       scrollToGallery();
@@ -472,6 +715,9 @@ export default function GaleriaPage() {
                     }}
                     style={{
                       boxShadow: `0 8px 40px ${hexToRgba(cat.color, 0.08)}`,
+                      ...(collageConfig?.layout === 'default-rotated' && idx === 0
+                        ? { gridColumn: '2', gridRow: '1 / 3' }
+                        : {}),
                     }}
                   >
                     {item.type === 'image' ? (
@@ -620,7 +866,7 @@ export default function GaleriaPage() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className={`relative z-10 mx-auto ${(cat.id === 'colorlab' || cat.id === 'musicvisuals' || cat.id === 'personalbrands' || cat.id === 'livemoments' || cat.id === 'foodmood') ? 'max-w-[1600px] px-4 md:px-8 lg:px-12' : 'max-w-7xl px-6 md:px-12 lg:px-20'}`}>
           {/* Section header */}
           <div className="flex items-center justify-between mb-12">
             <div className="flex items-center gap-4">
@@ -640,20 +886,773 @@ export default function GaleriaPage() {
             </span>
           </div>
 
-          {/* Masonry Grid */}
-          <div
-            className={`gallery-masonry transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}
-          >
-            {cat.media.map((item, idx) => (
-              <GalleryCard
-                key={`${cat.id}-${item.id}`}
-                item={item}
-                catColor={cat.color}
-                index={idx}
-                onClick={() => openModal(idx)}
-              />
-            ))}
-          </div>
+          {/* ── Color Lab: CSS Grid 4×4 Layout ── */}
+          {cat.id === 'colorlab' ? (
+            <div
+              className={`grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}
+            >
+              {cat.media.map((item, idx) => {
+                // Find the index in the reordered modalMedia so the lightbox starts at the right position
+                const modalIdx = modalMedia.findIndex((m) => m.id === item.id);
+                return (
+                  <GalleryCard
+                    key={`${cat.id}-${item.id}`}
+                    item={item}
+                    catColor={cat.color}
+                    index={idx}
+                    onClick={() => openModal(modalIdx !== -1 ? modalIdx : idx)}
+                  />
+                );
+              })}
+            </div>
+          ) : cat.id === 'musicvisuals' ? (
+            <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+              {/* Videos Section */}
+              {(() => {
+                const videos = cat.media.filter(m => m.type === 'video');
+                const images = cat.media.filter(m => (m.type === 'image' || m.type === 'gif') && !GALLERY_EXCLUDE_SRCS.has(m.src));
+                return (
+                  <>
+                    {videos.length > 0 && (() => {
+                      const VISIBLE = 3;
+                      const GAP = 16;
+                      const maxOffset = Math.max(0, videos.length - VISIBLE);
+                      const offset = Math.min(carouselOffset, maxOffset);
+                      // Each card width = (100% - gaps) / VISIBLE
+                      // translateX = offset * (cardWidth + gap) as percentage of container
+                      const cardWidthPercent = (100 - (VISIBLE - 1) * GAP / 10) / VISIBLE; // approximate
+                      return (
+                        <div className="mb-6 relative">
+                          {/* Outer wrapper — uses margin/padding trick to give shadow breathing room */}
+                          <div
+                            style={{
+                              overflow: 'hidden',
+                              margin: '-12px -12px -60px -12px',
+                              padding: '12px 12px 60px 12px',
+                            }}
+                          >
+                            {/* Sliding track */}
+                            <div
+                              className="flex gap-4"
+                              style={{
+                                transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                transform: `translateX(calc(-${offset} * (${100 / VISIBLE}% + ${GAP - GAP / VISIBLE}px)))`,
+                              }}
+                            >
+                              {videos.map((video) => {
+                                // Find position in the video-only ordered list
+                                const videoOrderIdx = MV_VIDEO_ORDER.indexOf(video.id);
+                                const startTime = VIDEO_POSTER_CONFIG[video.src] ?? 0;
+                                return (
+                                  <div
+                                    key={`${cat.id}-video-${video.id}`}
+                                    className="group relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
+                                    style={{
+                                      width: `calc((100% - ${(VISIBLE - 1) * GAP}px) / ${VISIBLE})`,
+                                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease',
+                                    }}
+                                    onClick={() => openModal(videoOrderIdx !== -1 ? videoOrderIdx : 0, 'videos')}
+                                    onMouseEnter={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(-4px)';
+                                      el.style.boxShadow = `0 20px 50px ${hexToRgba(cat.color, 0.12)}, 0 0 0 1px ${hexToRgba(cat.color, 0.15)}`;
+                                      const vid = el.querySelector('video');
+                                      if (vid) { vid.currentTime = 0; vid.play().catch(() => { }); }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(0)';
+                                      el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                                      const vid = el.querySelector('video');
+                                      if (vid) { vid.pause(); vid.currentTime = startTime; }
+                                    }}
+                                  >
+                                    <video
+
+                                      src={`${video.src}#t=${startTime}`}
+                                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+                                      playsInline
+                                      preload="metadata"
+                                      muted
+                                      loop
+                                    />
+                                    {/* Gradient overlay */}
+                                    <div
+                                      className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                                      style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%)' }}
+                                    />
+                                    {/* Hover border glow */}
+                                    <div
+                                      className="absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100"
+                                      style={{ boxShadow: `inset 0 0 0 1px ${hexToRgba(cat.color, 0.35)}` }}
+                                    />
+                                    {/* Play icon */}
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none">
+                                      <div
+                                        className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm scale-75 group-hover:scale-100 transition-transform duration-500"
+                                        style={{
+                                          background: hexToRgba(cat.color, 0.15),
+                                          border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                        }}
+                                      >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ color: cat.color, marginLeft: '2px' }}>
+                                          <polygon points="5 3 19 12 5 21 5 3" />
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    {/* Video badge */}
+                                    <div className="absolute top-3 left-3 pointer-events-none">
+                                      <div
+                                        className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                        style={{
+                                          background: 'rgba(0,0,0,0.5)',
+                                          color: 'rgba(255,255,255,0.7)',
+                                          border: '1px solid rgba(255,255,255,0.1)',
+                                        }}
+                                      >
+                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                        Video
+                                      </div>
+                                    </div>
+                                    {/* Index number */}
+                                    <div className="absolute bottom-3 right-3 pointer-events-none">
+                                      <span
+                                        className="text-xl font-black opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                                        style={{ fontFamily: 'var(--font-space-grotesk)', color: '#fff' }}
+                                      >
+                                        {String(videoOrderIdx + 1).padStart(2, '0')}
+                                      </span>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Navigation arrows */}
+                          {maxOffset > 0 && (
+                            <>
+                              {/* Left arrow */}
+                              <button
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                  backdropFilter: 'blur(12px)',
+                                  boxShadow: `0 4px 20px ${hexToRgba(cat.color, 0.2)}`,
+                                  opacity: offset > 0 ? 1 : 0.3,
+                                  pointerEvents: offset > 0 ? 'auto' : 'none',
+                                }}
+                                onClick={() => setCarouselOffset(Math.max(0, offset - 1))}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2.5">
+                                  <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                              </button>
+
+                              {/* Right arrow */}
+                              <button
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                  backdropFilter: 'blur(12px)',
+                                  boxShadow: `0 4px 20px ${hexToRgba(cat.color, 0.2)}`,
+                                  opacity: offset < maxOffset ? 1 : 0.3,
+                                  pointerEvents: offset < maxOffset ? 'auto' : 'none',
+                                }}
+                                onClick={() => setCarouselOffset(Math.min(maxOffset, offset + 1))}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2.5">
+                                  <path d="M9 18l6-6-6-6" />
+                                </svg>
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()}
+
+                    {/* Subtle divider */}
+                    {videos.length > 0 && images.length > 0 && (
+                      <div className="flex items-center justify-center my-8">
+                        <div
+                          className="h-px w-full max-w-md rounded-full"
+                          style={{
+                            background: `linear-gradient(to right, transparent, ${hexToRgba(cat.color, 0.15)}, transparent)`,
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Images Grid — 3 columns */}
+                    {images.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {images.map((image) => {
+                          // Find position in the image-only ordered list
+                          const imageOrderIdx = MV_IMAGE_ORDER.indexOf(image.id);
+                          return (
+                            <GalleryCard
+                              key={`${cat.id}-img-${image.id}`}
+                              item={image}
+                              catColor={cat.color}
+                              index={imageOrderIdx !== -1 ? imageOrderIdx : 0}
+                              onClick={() => openModal(imageOrderIdx !== -1 ? imageOrderIdx : 0, 'images')}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          ) : cat.id === 'personalbrands' ? (
+            <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+              {(() => {
+                const videos = cat.media.filter(m => m.type === 'video');
+                const images = cat.media.filter(m => m.type === 'image' || m.type === 'gif');
+                return (
+                  <>
+                    {/* Videos Section — horizontal row */}
+                    {videos.length > 0 && (() => {
+                      const VISIBLE = 4;
+                      const GAP = 16;
+                      const maxOffset = Math.max(0, videos.length - VISIBLE);
+                      const offset = Math.min(carouselOffset, maxOffset);
+                      return (
+                        <div className="mb-6 relative">
+                          {/* Outer wrapper — margin/padding trick for shadow breathing room */}
+                          <div
+                            style={{
+                              overflow: 'hidden',
+                              margin: '-12px -12px -60px -12px',
+                              padding: '12px 12px 60px 12px',
+                            }}
+                          >
+                            {/* Sliding track */}
+                            <div
+                              className="flex gap-4"
+                              style={{
+                                transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                transform: `translateX(calc(-${offset} * (${100 / VISIBLE}% + ${GAP - GAP / VISIBLE}px)))`,
+                              }}
+                            >
+                              {videos.map((video) => {
+                                // Find position in the video-only ordered list
+                                const videoOrderIdx = PB_VIDEO_ORDER.indexOf(video.id);
+                                const startTime = VIDEO_POSTER_CONFIG[video.src] ?? 0;
+                                return (
+                                  <div
+                                    key={`${cat.id}-video-${video.id}`}
+                                    className="group relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
+                                    style={{
+                                      width: `calc((100% - ${(VISIBLE - 1) * GAP}px) / ${VISIBLE})`,
+                                      aspectRatio: '16 / 9',
+                                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease',
+                                    }}
+                                    onClick={() => openModal(videoOrderIdx !== -1 ? videoOrderIdx : 0, 'videos')}
+                                    onMouseEnter={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(-4px)';
+                                      el.style.boxShadow = `0 20px 50px ${hexToRgba(cat.color, 0.12)}, 0 0 0 1px ${hexToRgba(cat.color, 0.15)}`;
+                                      const vid = el.querySelector('video');
+                                      if (vid) vid.play().catch(() => { });
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(0)';
+                                      el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                                      const vid = el.querySelector('video');
+                                      if (vid) { vid.pause(); vid.currentTime = startTime; }
+                                    }}
+                                  >
+                                    <video
+
+                                      src={`${video.src}#t=${startTime}`}
+                                      className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105"
+                                      playsInline
+                                      preload="metadata"
+                                      muted
+                                      loop
+                                    />
+                                    {/* Gradient overlay */}
+                                    <div
+                                      className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                                      style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%)' }}
+                                    />
+                                    {/* Hover border glow */}
+                                    <div
+                                      className="absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100"
+                                      style={{ boxShadow: `inset 0 0 0 1px ${hexToRgba(cat.color, 0.35)}` }}
+                                    />
+                                    {/* Play icon */}
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none">
+                                      <div
+                                        className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm scale-75 group-hover:scale-100 transition-transform duration-500"
+                                        style={{
+                                          background: hexToRgba(cat.color, 0.15),
+                                          border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                        }}
+                                      >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ color: cat.color, marginLeft: '2px' }}>
+                                          <polygon points="5 3 19 12 5 21 5 3" />
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    {/* Video badge */}
+                                    <div className="absolute top-3 left-3 pointer-events-none">
+                                      <div
+                                        className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                        style={{
+                                          background: 'rgba(0,0,0,0.5)',
+                                          color: 'rgba(255,255,255,0.7)',
+                                          border: '1px solid rgba(255,255,255,0.1)',
+                                        }}
+                                      >
+                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                        Video
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Navigation arrows */}
+                          {maxOffset > 0 && (
+                            <>
+                              {/* Left arrow */}
+                              <button
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                  backdropFilter: 'blur(12px)',
+                                  boxShadow: `0 4px 20px ${hexToRgba(cat.color, 0.2)}`,
+                                  opacity: offset > 0 ? 1 : 0.3,
+                                  pointerEvents: offset > 0 ? 'auto' : 'none',
+                                }}
+                                onClick={() => setCarouselOffset(Math.max(0, offset - 1))}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2.5">
+                                  <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                              </button>
+
+                              {/* Right arrow */}
+                              <button
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                  backdropFilter: 'blur(12px)',
+                                  boxShadow: `0 4px 20px ${hexToRgba(cat.color, 0.2)}`,
+                                  opacity: offset < maxOffset ? 1 : 0.3,
+                                  pointerEvents: offset < maxOffset ? 'auto' : 'none',
+                                }}
+                                onClick={() => setCarouselOffset(Math.min(maxOffset, offset + 1))}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2.5">
+                                  <path d="M9 18l6-6-6-6" />
+                                </svg>
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()}
+
+                    {/* Subtle divider */}
+                    {videos.length > 0 && images.length > 0 && (
+                      <div className="flex items-center justify-center my-8">
+                        <div
+                          className="h-px w-full max-w-md rounded-full"
+                          style={{
+                            background: `linear-gradient(to right, transparent, ${hexToRgba(cat.color, 0.15)}, transparent)`,
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Images — balanced columns for alignment */}
+                    {images.length > 0 && (
+                      <div className="flex gap-4 items-stretch">
+                        {PB_IMAGE_COLUMNS.map((colIndices, colIdx) => (
+                          <div
+                            key={colIdx}
+                            className="flex-1 flex flex-col"
+                            style={{ justifyContent: 'space-between', gap: '16px' }}
+                          >
+                            {colIndices.map((imgIdx) => {
+                              if (imgIdx >= images.length) return null;
+                              const image = images[imgIdx];
+                              // Find position in the image-only ordered list
+                              const imageOrderIdx = PB_IMAGE_ORDER.indexOf(image.id);
+                              return (
+                                <GalleryCard
+                                  key={`${cat.id}-img-${image.id}`}
+                                  item={image}
+                                  catColor={cat.color}
+                                  index={imageOrderIdx !== -1 ? imageOrderIdx : 0}
+                                  onClick={() => openModal(imageOrderIdx !== -1 ? imageOrderIdx : 0, 'images')}
+                                />
+                              );
+                            })}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          ) : cat.id === 'livemoments' ? (
+            /* ── Live Moments: Videos on top + Staggered Mosaic below ── */
+            <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+              {(() => {
+                // Treat GIFs as images — merge them together
+                const allVisual = cat.media.filter(m => (m.type === 'image' || m.type === 'gif') && !GALLERY_EXCLUDE_SRCS.has(m.src));
+                const videos = cat.media.filter(m => m.type === 'video');
+
+                return (
+                  <>
+                    {/* ── TOP: 3 Videos in a row ── */}
+                    {videos.length > 0 && (
+                      <div className="flex gap-3 md:gap-4 justify-center mb-4 md:mb-5">
+                        {videos.map((video) => {
+                          const videoOrderIdx = LM_VIDEO_ORDER.indexOf(video.id);
+                          const startTime = VIDEO_POSTER_CONFIG[video.src] ?? 0;
+                          return (
+                            <div
+                              key={`lm-vid-${video.id}`}
+                              className="group relative rounded-2xl overflow-hidden cursor-pointer flex-1 aspect-square"
+                              style={{
+                                transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease',
+                              }}
+                              onClick={() => openModal(videoOrderIdx !== -1 ? videoOrderIdx : 0, 'videos')}
+                              onMouseEnter={(e) => {
+                                const el = e.currentTarget;
+                                el.style.transform = 'translateY(-4px)';
+                                el.style.boxShadow = `0 20px 50px ${hexToRgba(cat.color, 0.12)}, 0 0 0 1px ${hexToRgba(cat.color, 0.15)}`;
+                                const vid = el.querySelector('video');
+                                if (vid) vid.play().catch(() => { });
+                              }}
+                              onMouseLeave={(e) => {
+                                const el = e.currentTarget;
+                                el.style.transform = 'translateY(0)';
+                                el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                                const vid = el.querySelector('video');
+                                if (vid) { vid.pause(); vid.currentTime = startTime; }
+                              }}
+                            >
+                              <video
+
+                                src={`${video.src}#t=${startTime}`}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                playsInline
+                                preload="metadata"
+                                muted
+                                loop
+                              />
+                              {/* Gradient overlay */}
+                              <div
+                                className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                                style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%)' }}
+                              />
+                              {/* Hover border glow */}
+                              <div
+                                className="absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100"
+                                style={{ boxShadow: `inset 0 0 0 1px ${hexToRgba(cat.color, 0.35)}` }}
+                              />
+                              {/* Play icon */}
+                              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none">
+                                <div
+                                  className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm scale-75 group-hover:scale-100 transition-transform duration-500"
+                                  style={{
+                                    background: hexToRgba(cat.color, 0.15),
+                                    border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                  }}
+                                >
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ color: cat.color, marginLeft: '2px' }}>
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                  </svg>
+                                </div>
+                              </div>
+                              {/* Video badge */}
+                              <div className="absolute top-3 left-3 pointer-events-none">
+                                <div
+                                  className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                  style={{
+                                    background: 'rgba(0,0,0,0.5)',
+                                    color: 'rgba(255,255,255,0.7)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                  }}
+                                >
+                                  <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                  Video
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {/* Subtle divider */}
+                    {videos.length > 0 && allVisual.length > 0 && (
+                      <div className="flex items-center justify-center my-8">
+                        <div
+                          className="h-px w-full max-w-md rounded-full"
+                          style={{
+                            background: `linear-gradient(to right, transparent, ${hexToRgba(cat.color, 0.15)}, transparent)`,
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* ── BOTTOM: Staggered Mosaic — 3 offset columns ── */}
+                    {allVisual.length > 0 && (
+                      <div className="flex gap-4 items-start">
+                        {LM_IMAGE_COLUMNS.map((colIndices, colIdx) => (
+                          <div
+                            key={colIdx}
+                            className="flex-1 flex flex-col gap-4"
+                            style={{ paddingTop: `${LM_COLUMN_OFFSETS[colIdx] ?? 0}px` }}
+                          >
+                            {colIndices.map((imgIdx) => {
+                              if (imgIdx >= allVisual.length) return null;
+                              const image = allVisual[imgIdx];
+                              const imageOrderIdx = LM_IMAGE_ORDER.indexOf(image.id);
+                              return (
+                                <GalleryCard
+                                  key={`${cat.id}-img-${image.id}`}
+                                  item={image}
+                                  catColor={cat.color}
+                                  index={imageOrderIdx !== -1 ? imageOrderIdx : 0}
+                                  onClick={() => openModal(imageOrderIdx !== -1 ? imageOrderIdx : 0, 'images')}
+                                />
+                              );
+                            })}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          ) : cat.id === 'foodmood' ? (
+            /* ── Food Mood: Vertical video carousel + Staggered Mosaic below ── */
+            <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+              {(() => {
+                const allVisual = cat.media.filter(m => (m.type === 'image' || m.type === 'gif') && !GALLERY_EXCLUDE_SRCS.has(m.src));
+                const videosRaw = cat.media.filter(m => m.type === 'video');
+                const byIdRaw = new Map(videosRaw.map(v => [v.id, v]));
+                const videos = FM_VIDEO_ORDER.map(id => byIdRaw.get(id)!).filter(Boolean);
+
+                return (
+                  <>
+                    {/* ── TOP: Vertical Video Carousel ── */}
+                    {videos.length > 0 && (() => {
+                      const VISIBLE = 4;
+                      const GAP = 16;
+                      const maxOffset = Math.max(0, videos.length - VISIBLE);
+                      const offset = Math.min(carouselOffset, maxOffset);
+                      return (
+                        <div className="mb-6 relative">
+                          <div
+                            style={{
+                              overflow: 'hidden',
+                              margin: '-12px -12px -60px -12px',
+                              padding: '12px 12px 60px 12px',
+                            }}
+                          >
+                            <div
+                              className="flex gap-4"
+                              style={{
+                                transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                transform: `translateX(calc(-${offset} * (${100 / VISIBLE}% + ${GAP - GAP / VISIBLE}px)))`,
+                              }}
+                            >
+                              {videos.map((video, idx) => {
+                                const startTime = VIDEO_POSTER_CONFIG[video.src] ?? 0;
+                                return (
+                                  <div
+                                    key={`${cat.id}-video-${video.id}`}
+                                    className="group relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
+                                    style={{
+                                      width: `calc((100% - ${(VISIBLE - 1) * GAP}px) / ${VISIBLE})`,
+                                      aspectRatio: '9 / 16',
+                                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease',
+                                    }}
+                                    onClick={() => openModal(idx, 'videos')}
+                                    onMouseEnter={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(-4px)';
+                                      el.style.boxShadow = `0 20px 50px ${hexToRgba(cat.color, 0.12)}, 0 0 0 1px ${hexToRgba(cat.color, 0.15)}`;
+                                      const vid = el.querySelector('video');
+                                      if (vid) vid.play().catch(() => { });
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      const el = e.currentTarget;
+                                      el.style.transform = 'translateY(0)';
+                                      el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                                      const vid = el.querySelector('video');
+                                      if (vid) { vid.pause(); vid.currentTime = startTime; }
+                                    }}
+                                  >
+                                    <video
+
+                                      src={`${video.src}#t=${startTime}`}
+                                      className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105"
+                                      playsInline
+                                      preload="metadata"
+                                      muted
+                                      loop
+                                    />
+                                    <div
+                                      className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                                      style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%)' }}
+                                    />
+                                    <div
+                                      className="absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100"
+                                      style={{ boxShadow: `inset 0 0 0 1px ${hexToRgba(cat.color, 0.35)}` }}
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 pointer-events-none">
+                                      <div
+                                        className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm scale-75 group-hover:scale-100 transition-transform duration-500"
+                                        style={{
+                                          background: hexToRgba(cat.color, 0.15),
+                                          border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
+                                        }}
+                                      >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ color: cat.color, marginLeft: '2px' }}>
+                                          <polygon points="5 3 19 12 5 21 5 3" />
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div className="absolute top-3 left-3 pointer-events-none">
+                                      <div
+                                        className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                        style={{
+                                          background: 'rgba(0,0,0,0.5)',
+                                          color: 'rgba(255,255,255,0.7)',
+                                          border: '1px solid rgba(255,255,255,0.1)',
+                                        }}
+                                      >
+                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                        Video
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Carousel arrows */}
+                          {videos.length > VISIBLE && (
+                            <>
+                              <button
+                                onClick={() => setCarouselOffset(Math.max(0, carouselOffset - 1))}
+                                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 cursor-pointer"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.35)}`,
+                                  opacity: carouselOffset === 0 ? 0.3 : 1,
+                                  pointerEvents: carouselOffset === 0 ? 'none' : 'auto',
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2">
+                                  <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                              </button>
+                              <button
+                                onClick={() => setCarouselOffset(Math.min(maxOffset, carouselOffset + 1))}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 cursor-pointer"
+                                style={{
+                                  background: hexToRgba(cat.color, 0.15),
+                                  border: `1px solid ${hexToRgba(cat.color, 0.35)}`,
+                                  opacity: offset >= maxOffset ? 0.3 : 1,
+                                  pointerEvents: offset >= maxOffset ? 'none' : 'auto',
+                                }}
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cat.color} strokeWidth="2">
+                                  <path d="M9 18l6-6-6-6" />
+                                </svg>
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()}
+
+                    {/* Subtle divider */}
+                    {videos.length > 0 && allVisual.length > 0 && (
+                      <div className="flex items-center justify-center my-8">
+                        <div
+                          className="h-px w-full max-w-md rounded-full"
+                          style={{
+                            background: `linear-gradient(to right, transparent, ${hexToRgba(cat.color, 0.15)}, transparent)`,
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* ── BOTTOM: Row-based grid — 4 / 4 / 2 centered ── */}
+                    {allVisual.length > 0 && (
+                      <div className="flex flex-col gap-4">
+                        {FM_IMAGE_ROWS.map((rowIndices, rowIdx) => (
+                          <div
+                            key={rowIdx}
+                            className="flex gap-4 justify-center"
+                          >
+                            {rowIndices.map((imgIdx) => {
+                              if (imgIdx >= allVisual.length) return null;
+                              const image = allVisual[imgIdx];
+                              const imageOrderIdx = FM_IMAGE_ORDER.indexOf(image.id);
+                              return (
+                                <div
+                                  key={`${cat.id}-img-${image.id}`}
+                                  style={{ width: 'calc((100% - 48px) / 4)', aspectRatio: '4 / 5' }}
+                                  className="flex-shrink-0 rounded-2xl overflow-hidden"
+                                >
+                                  <GalleryCard
+                                    item={image}
+                                    catColor={cat.color}
+                                    index={imageOrderIdx !== -1 ? imageOrderIdx : 0}
+                                    onClick={() => openModal(imageOrderIdx !== -1 ? imageOrderIdx : 0, 'images')}
+                                    fillContainer
+                                  />
+                                </div>
+                              );
+                            })}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          ) : (
+            /* ── Default: Masonry Grid for other categories ── */
+            <div
+              className={`gallery-masonry transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}
+            >
+              {cat.media.map((item, idx) => (
+                <GalleryCard
+                  key={`${cat.id}-${item.id}`}
+                  item={item}
+                  catColor={cat.color}
+                  index={idx}
+                  onClick={() => openModal(idx)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -699,9 +1698,36 @@ export default function GaleriaPage() {
             >
               {cat.nombre}
             </span>
+            {/* Gallery type badge for Music Visuals */}
+            {(cat.id === 'musicvisuals' || cat.id === 'personalbrands' || cat.id === 'livemoments' || cat.id === 'foodmood') && modalGalleryType !== 'all' && (
+              <>
+                <span className="text-gray-700">·</span>
+                <span
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider"
+                  style={{
+                    background: hexToRgba(cat.color, 0.12),
+                    border: `1px solid ${hexToRgba(cat.color, 0.25)}`,
+                    color: cat.color,
+                    fontFamily: 'var(--font-inter)',
+                  }}
+                >
+                  {modalGalleryType === 'videos' ? (
+                    <>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                      Galería de Videos
+                    </>
+                  ) : (
+                    <>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                      Galería de Imágenes
+                    </>
+                  )}
+                </span>
+              </>
+            )}
             <span className="text-gray-700">·</span>
             <span className="text-sm text-gray-500" style={{ fontFamily: 'var(--font-inter)' }}>
-              {modalIndex + 1} / {cat.media.length}
+              {modalIndex + 1} / {modalMedia.length}
             </span>
           </div>
 
@@ -731,19 +1757,19 @@ export default function GaleriaPage() {
 
             {/* Media */}
             <div className="relative w-full flex items-center justify-center" style={{ height: '82vh' }}>
-              {cat.media[modalIndex]?.type === 'video' ? (
+              {modalMedia[modalIndex]?.type === 'video' ? (
                 <video
                   ref={videoRef}
-                  src={cat.media[modalIndex]?.src}
+                  src={modalMedia[modalIndex]?.src}
                   className="max-w-full max-h-full w-auto h-auto object-contain rounded-xl"
                   controls
                   playsInline
                   autoPlay
                   style={{ boxShadow: `0 0 80px ${hexToRgba(cat.color, 0.12)}` }}
                 />
-              ) : cat.media[modalIndex]?.type === 'gif' ? (
+              ) : modalMedia[modalIndex]?.type === 'gif' ? (
                 <video
-                  src={cat.media[modalIndex]?.src}
+                  src={modalMedia[modalIndex]?.src}
                   className="max-w-full max-h-full w-auto h-auto object-contain rounded-xl"
                   playsInline
                   autoPlay
@@ -754,7 +1780,7 @@ export default function GaleriaPage() {
               ) : (
                 <div className="relative max-w-full max-h-full flex items-center justify-center" style={{ height: '82vh' }}>
                   <Image
-                    src={cat.media[modalIndex]?.src || ''}
+                    src={modalMedia[modalIndex]?.src || ''}
                     alt={`${cat.nombre} ${modalIndex + 1}`}
                     width={1920}
                     height={1080}
@@ -790,11 +1816,11 @@ export default function GaleriaPage() {
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-4">
             <div className="text-center">
               <span className="text-sm uppercase tracking-widest" style={{ color: cat.color }}>
-                {cat.media[modalIndex]?.type === 'video' ? 'Video' : cat.media[modalIndex]?.type === 'gif' ? 'GIF' : 'Imagen'}
+                {modalMedia[modalIndex]?.type === 'video' ? 'Video' : modalMedia[modalIndex]?.type === 'gif' ? 'GIF' : 'Imagen'}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              {cat.media.map((_, i) => (
+              {modalMedia.map((_, i) => (
                 <button
                   key={i}
                   onClick={(e) => {
@@ -820,6 +1846,10 @@ export default function GaleriaPage() {
       {/* GLOBAL STYLES                    */}
       {/* ════════════════════════════════ */}
       <style jsx global>{`
+        .mv-video-carousel::-webkit-scrollbar {
+          display: none;
+        }
+
         .gallery-masonry {
           columns: 2;
           column-gap: 12px;
@@ -872,6 +1902,8 @@ export default function GaleriaPage() {
         .gallery-scroll-indicator {
           animation: galleryScrollIndicator 2s ease-in-out infinite;
         }
+
+        /* ── Live Moments: old grid selectors removed, now using flex layout ── */
       `}</style>
     </div>
   );
@@ -885,11 +1917,13 @@ function GalleryCard({
   catColor,
   index,
   onClick,
+  fillContainer = false,
 }: {
   item: MediaItem;
   catColor: string;
   index: number;
   onClick: () => void;
+  fillContainer?: boolean;
 }) {
   const videoCardRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -912,7 +1946,7 @@ function GalleryCard({
 
   return (
     <div
-      className="group relative rounded-2xl overflow-hidden cursor-pointer"
+      className={`group relative rounded-2xl overflow-hidden cursor-pointer ${fillContainer ? 'w-full h-full' : ''}`}
       onClick={onClick}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -925,14 +1959,24 @@ function GalleryCard({
       }}
     >
       {item.type === 'image' ? (
-        <Image
-          src={item.src}
-          alt={`Gallery item ${index + 1}`}
-          width={800}
-          height={600}
-          className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        />
+        fillContainer ? (
+          <Image
+            src={item.src}
+            alt={`Gallery item ${index + 1}`}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        ) : (
+          <Image
+            src={item.src}
+            alt={`Gallery item ${index + 1}`}
+            width={800}
+            height={600}
+            className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        )
       ) : item.type === 'gif' ? (
         <video
           ref={(el) => {

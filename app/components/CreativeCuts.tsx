@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
 
+const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
+
 export default function CreativeCuts() {
   const theme = getThemeColors();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -26,7 +28,7 @@ export default function CreativeCuts() {
   const videos = [
     {
       id: 1,
-      src: '/videos/creative-cuts/intencion-creativecut.mp4',
+      src: `${CDN}/videos/intencion-creativecut.mp4`,
       title: ' ',
       category: ' ',
     },

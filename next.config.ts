@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['portafolio-giuliano-pull-zone.b-cdn.net'],
+  },
 };
 
 export default nextConfig;

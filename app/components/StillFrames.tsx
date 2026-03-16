@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
 
+const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
+
 export default function StillFrames() {
   const theme = getThemeColors();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -39,14 +41,14 @@ export default function StillFrames() {
   const projects = [
     {
       id: 1,
-      src: '/images/still-frames/still_frames_1ver.JPG',
+      src: `${CDN}/images/stillframes/still_frames_1ver.webp`,
       title: ' ',
       category: ' ',
       format: 'vertical'
     },
     {
       id: 2,
-      src: '/images/still-frames/still_frames_1h.png',
+      src: `${CDN}/images/stillframes/still_frames_1h.webp`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -54,7 +56,7 @@ export default function StillFrames() {
     },
     {
       id: 3,
-      src: '/images/still-frames/still_frames_2ver.jpg',
+      src: `${CDN}/images/stillframes/still_frames_2ver.webp`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -62,7 +64,7 @@ export default function StillFrames() {
     },
     {
       id: 4,
-      src: '/images/still-frames/still_frames_3v.jpg',
+      src: `${CDN}/images/stillframes/still_frames_3v.webp`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -70,7 +72,7 @@ export default function StillFrames() {
     },
     {
       id: 5,
-      src: '/images/still-frames/still_frames_1q.jpg',
+      src: `${CDN}/images/stillframes/still_frames_1q.webp`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -78,7 +80,7 @@ export default function StillFrames() {
     },
     {
       id: 6,
-      src: '/images/still-frames/still_frames_2h.png', // Reusing
+      src: `${CDN}/images/stillframes/still_frames_2h.webp`, // Reusing
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -86,7 +88,7 @@ export default function StillFrames() {
     },
     {
       id: 7,
-      src: '/images/still-frames/still_frames_4v.jpg', // Reusing
+      src: `${CDN}/images/stillframes/sd.webp`, // Reusing
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -94,7 +96,7 @@ export default function StillFrames() {
     },
     {
       id: 8,
-      src: '/images/still-frames/still_frames_3h.png', // Reusing
+      src: `${CDN}/images/stillframes/still_frames_3h.webp`, // Reusing
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -382,20 +384,23 @@ export default function StillFrames() {
             </button>
 
             {/* Imagen principal */}
-            <div className="relative w-full max-w-5xl h-[85vh] flex items-center justify-center">
-              <div
-                className="relative w-full h-full rounded-2xl overflow-hidden"
-                style={{ boxShadow: `0 0 120px ${theme.primaryRgba(0.3)}` }}
-              >
-                <Image
-                  src={projects[currentImageIndex].src}
-                  alt={projects[currentImageIndex].alt || projects[currentImageIndex].title}
-                  fill
-                  className="object-contain"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                />
-              </div>
+            <div className="relative max-w-5xl flex items-center justify-center">
+              <Image
+                src={projects[currentImageIndex].src}
+                alt={projects[currentImageIndex].alt || projects[currentImageIndex].title}
+                width={1920}
+                height={1080}
+                className="rounded-2xl"
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  boxShadow: `0 0 120px ${theme.primaryRgba(0.3)}`,
+                }}
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              />
             </div>
 
             {/* Botón siguiente */}
@@ -439,7 +444,7 @@ export default function StillFrames() {
                       : 'w-3 h-3 hover:opacity-100 opacity-50'
                       }`}
                     style={{
-                      backgroundColor: idx === currentImageIndex ? theme.accent : 'white'
+                      backgroundColor: idx === currentImageIndex ? theme.primary : 'white'
                     }}
                   />
                 ))}
