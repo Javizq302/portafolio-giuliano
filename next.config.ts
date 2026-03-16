@@ -2,7 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['portafolio-giuliano-pull-zone.b-cdn.net'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "portafolio-giuliano-pull-zone.b-cdn.net",
+      },
+    ],
   },
 };
 
