@@ -3,7 +3,7 @@ import { getCurrentTheme, getCurrentThemeNavbar } from '../config/colorThemes';
 
 export const getThemeColors = () => {
   const theme = getCurrentTheme();
-  
+
   return {
     // Colores directos
     primary: theme.primary,
@@ -11,11 +11,11 @@ export const getThemeColors = () => {
     accent: theme.accent,
     tertiary: theme.tertiary,
     quaternary: theme.quaternary,
-    
+
     // Para usar en gradientes
     gradientPrimary: `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 50%, ${theme.accent} 100%)`,
     gradientNavbar: `linear-gradient(90deg, ${theme.primary} 0%, ${theme.secondary} 25%, ${theme.accent} 50%, ${theme.tertiary} 75%, ${theme.quaternary} 100%)`,
-    
+
     // Para usar en rgba con opacidad
     primaryRgba: (opacity: number) => {
       const rgb = hexToRgb(theme.primary);
@@ -42,29 +42,29 @@ export const getThemeColors = () => {
 
 export const getThemeColorsNavbar = () => {
   const theme = getCurrentThemeNavbar();
-  
+
   return {
     // Colores de fondo
     background: theme.background,
     backgroundSecondary: theme.backgroundSecondary,
     backgroundTertiary: theme.backgroundTertiary,
-    
+
     // Colores de texto
     text: theme.text,
     textSecondary: theme.textSecondary,
     textTertiary: theme.textTertiary,
-    
+
     // Colores directos
     primary: theme.primary,
     secondary: theme.secondary,
     accent: theme.accent,
     tertiary: theme.tertiary,
     quaternary: theme.quaternary,
-    
+
     // Para usar en gradientes
     gradientPrimary: `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 50%, ${theme.accent} 100%)`,
     gradientNavbar: `linear-gradient(90deg, ${theme.primary} 0%, ${theme.secondary} 25%, ${theme.accent} 50%, ${theme.tertiary} 75%, ${theme.quaternary} 100%)`,
-    
+
     // Para usar en rgba con opacidad
     primaryRgba: (opacity: number) => {
       const rgb = hexToRgb(theme.primary);
