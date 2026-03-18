@@ -725,6 +725,7 @@ export default function GaleriaPage() {
                         src={item.src}
                         alt={`${cat.nombre} preview ${idx + 1}`}
                         fill
+                        quality={100}
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, 400px"
                       />

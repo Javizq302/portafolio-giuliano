@@ -189,6 +189,7 @@ export default function StillFrames() {
                     src={project.src}
                     alt={project.alt || project.title}
                     fill
+                    quality={100}
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
 
@@ -390,6 +391,7 @@ export default function StillFrames() {
                 alt={projects[currentImageIndex].alt || projects[currentImageIndex].title}
                 width={1920}
                 height={1080}
+                quality={100}
                 className="rounded-2xl"
                 style={{
                   width: 'auto',
