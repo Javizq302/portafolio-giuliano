@@ -299,113 +299,115 @@ export default function Hero() {
       </div>
 
       {/* Contenedor principal con layout moderno */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center min-h-screen pt-38 pb-20" style={{ paddingLeft: 'clamp(4rem, 8vw, 12rem)' }}>
+      <div className="hero-main relative z-10 container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center min-h-screen pt-38 pb-20" style={{ paddingLeft: 'clamp(4rem, 8vw, 12rem)' }}>
 
         {/* Lado izquierdo - Texto */}
         <div
-          className={`text-center lg:text-left space-y-8 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          className={`hero-text text-center lg:text-left space-y-8 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
         >
-          <div className="space-y-6">
-            <h1
-              className="font-bold leading-tight flex flex-col"
-              style={{ fontFamily: "Froople, Arial, sans-serif" }}
+          <div className="hero-text-content space-y-8">
+            <div className="space-y-6">
+              <h1
+                className="hero-title font-bold leading-tight flex flex-col"
+                style={{ fontFamily: "Froople, Arial, sans-serif" }}
+              >
+                <span
+                  className="text-white block"
+                  style={{
+                    fontFamily: "Froople, Arial, sans-serif",
+                    letterSpacing: '0.04em',
+                    fontSize: 'clamp(2.5rem, 5vw, 6rem)',
+                  }}
+                >
+                  GIULIANO
+                </span>
+                <span
+                  className="hero-medina block relative"
+                  style={{
+                    fontFamily: "Froople, Arial, sans-serif",
+                    color: '#ED961A',
+                    letterSpacing: '0.04em',
+                    fontSize: 'clamp(2.5rem, 5vw, 6rem)',
+                    textShadow: '0 0 3px rgba(237, 150, 26, 0.2), 0 0 9px rgba(237, 150, 26, 0.1), 0 0 12px rgba(237, 150, 26, 0.1)',
+                    paddingLeft: 'clamp(3rem, 6vw, 8rem)',
+                    marginTop: 'clamp(-0.9rem, -2vw, -2rem)',
+                  }}
+                >
+                  MEDINA
+                </span>
+              </h1>
+
+              <div className="flex items-center justify-center lg:justify-start gap-4">
+                <div className="h-px w-16" style={{ background: `linear-gradient(to right, transparent, ${theme.primary}, ${theme.secondary})` }} />
+                <p
+                  className="text-xl md:text-2xl lg:text-3xl text-gray-300 uppercase font-light"
+                  style={{ fontFamily: 'var(--font-inter)', letterSpacing: '0.03em' }}
+                >
+                  Productora
+                </p>
+                <div className="h-px w-16" style={{ background: `linear-gradient(to left, transparent, ${theme.primary}, ${theme.secondary})` }} />
+              </div>
+            </div>
+
+            <p
+              className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              style={{ fontFamily: 'var(--font-inter)' }}
             >
-              <span
-                className="text-white block"
+              Disfrutamos el proceso de convertir ideas en imágenes reales, sólidas y funcionales.
+            </p>
+
+            {/* Badge sutil con información adicional */}
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start items-center pt-2">
+              <div
+                className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
                 style={{
-                  fontFamily: "Froople, Arial, sans-serif",
-                  letterSpacing: '0.04em',
-                  fontSize: 'clamp(2.5rem, 5vw, 6rem)',
+                  fontFamily: 'var(--font-inter)',
+                  borderColor: theme.primaryRgba(0.2),
+                  backgroundColor: theme.primaryRgba(0.05),
+                  color: theme.primaryRgba(0.8),
                 }}
               >
-                GIULIANO
-              </span>
-              <span
-                className="block relative"
+                Visual Storyteller
+              </div>
+              <div
+                className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
                 style={{
-                  fontFamily: "Froople, Arial, sans-serif",
-                  color: '#ED961A',
-                  letterSpacing: '0.04em',
-                  fontSize: 'clamp(2.5rem, 5vw, 6rem)',
-                  textShadow: '0 0 3px rgba(237, 150, 26, 0.2), 0 0 9px rgba(237, 150, 26, 0.1), 0 0 12px rgba(237, 150, 26, 0.1)',
-                  paddingLeft: 'clamp(3rem, 6vw, 8rem)',
-                  marginTop: 'clamp(-0.9rem, -2vw, -2rem)',
+                  fontFamily: 'var(--font-inter)',
+                  borderColor: theme.secondaryRgba(0.2),
+                  backgroundColor: theme.secondaryRgba(0.05),
+                  color: theme.secondaryRgba(0.8),
                 }}
               >
-                MEDINA
-              </span>
-            </h1>
-
-            <div className="flex items-center justify-center lg:justify-start gap-4">
-              <div className="h-px w-16" style={{ background: `linear-gradient(to right, transparent, ${theme.primary}, ${theme.secondary})` }} />
-              <p
-                className="text-xl md:text-2xl lg:text-3xl text-gray-300 uppercase font-light"
-                style={{ fontFamily: 'var(--font-inter)', letterSpacing: '0.03em' }}
+                Videographer
+              </div>
+              <div
+                className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
+                style={{
+                  fontFamily: 'var(--font-inter)',
+                  borderColor: theme.accentRgba(0.2),
+                  backgroundColor: theme.accentRgba(0.05),
+                  color: theme.accentRgba(0.8),
+                }}
               >
-                Productora
-              </p>
-              <div className="h-px w-16" style={{ background: `linear-gradient(to left, transparent, ${theme.primary}, ${theme.secondary})` }} />
-            </div>
-          </div>
-
-          <p
-            className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-            style={{ fontFamily: 'var(--font-inter)' }}
-          >
-            Disfrutamos el proceso de convertir ideas en imágenes reales, sólidas y funcionales
-          </p>
-
-          {/* Badge sutil con información adicional */}
-          <div className="flex flex-wrap gap-3 justify-center lg:justify-start items-center pt-2">
-            <div
-              className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
-              style={{
-                fontFamily: 'var(--font-inter)',
-                borderColor: theme.primaryRgba(0.2),
-                backgroundColor: theme.primaryRgba(0.05),
-                color: theme.primaryRgba(0.8),
-              }}
-            >
-              Visual Storyteller
-            </div>
-            <div
-              className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
-              style={{
-                fontFamily: 'var(--font-inter)',
-                borderColor: theme.secondaryRgba(0.2),
-                backgroundColor: theme.secondaryRgba(0.05),
-                color: theme.secondaryRgba(0.8),
-              }}
-            >
-              Videographer
-            </div>
-            <div
-              className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
-              style={{
-                fontFamily: 'var(--font-inter)',
-                borderColor: theme.accentRgba(0.2),
-                backgroundColor: theme.accentRgba(0.05),
-                color: theme.accentRgba(0.8),
-              }}
-            >
-              Creative Director
-            </div>
-            <div
-              className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
-              style={{
-                fontFamily: 'var(--font-inter)',
-                borderColor: theme.quaternaryRgba(0.2),
-                backgroundColor: theme.quaternaryRgba(0.05),
-                color: theme.quaternaryRgba(0.8),
-              }}
-            >
-              Color Grader
+                Creative Director
+              </div>
+              <div
+                className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
+                style={{
+                  fontFamily: 'var(--font-inter)',
+                  borderColor: theme.quaternaryRgba(0.2),
+                  backgroundColor: theme.quaternaryRgba(0.05),
+                  color: theme.quaternaryRgba(0.8),
+                }}
+              >
+                Color Grader
+              </div>
             </div>
           </div>
 
           {/* Botones de acción */}
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+          <div className="hero-buttons flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
             <a
               href="#creative-cuts"
               className="px-8 py-4 font-semibold rounded-full transition-all duration-300"
@@ -451,7 +453,7 @@ export default function Hero() {
 
         {/* Lado derecho - Imagen moderna */}
         <div
-          className={`relative flex items-center justify-center transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          className={`hero-image relative flex items-center justify-center transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}
         >
           <div className="relative w-full max-w-md -mt-12">
@@ -544,6 +546,8 @@ export default function Hero() {
             <div className="absolute top-1/2 -right-8 w-2 h-2 rounded-full" style={{ backgroundColor: 'rgba(128, 58, 11, 0.5)' }} />
           </div>
         </div>
+
+
       </div>
 
       {/* Indicador de scroll - esquina inferior derecha */}
@@ -614,6 +618,37 @@ export default function Hero() {
         
         .animate-scroll-indicator {
           animation: scroll-indicator 2s ease-in-out infinite;
+        }
+
+        /* Mobile-only overrides */
+        @media (max-width: 1023px) {
+          .hero-main {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            padding-top: 7rem;
+            gap: 2rem;
+            grid-template-columns: 1fr !important;
+          }
+          .hero-text {
+            display: contents;
+          }
+          .hero-text-content {
+            order: 1;
+            text-align: center;
+          }
+          .hero-title {
+            align-items: center;
+          }
+          .hero-medina {
+            padding-left: 0 !important;
+          }
+          .hero-image {
+            order: 2;
+          }
+          .hero-buttons {
+            order: 3;
+            justify-content: center;
+          }
         }
       `}</style>
     </section>
