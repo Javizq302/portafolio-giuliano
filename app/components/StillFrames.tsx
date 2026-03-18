@@ -241,6 +241,22 @@ export default function StillFrames() {
           .format-vertical {
             grid-row: span 2;
           }
+
+          /* Item 8: en tablet se vuelve cuadrado para llenar el espacio vacío */
+          .still-frames-collage > :nth-child(8) {
+            grid-column: span 1;
+            aspect-ratio: 1 / 1;
+          }
+
+          /* Items 1, 3, 4, 5: cuadrados en tablet */
+          .still-frames-collage > :nth-child(1),
+          .still-frames-collage > :nth-child(3),
+          .still-frames-collage > :nth-child(4),
+          .still-frames-collage > :nth-child(5),
+          .still-frames-collage > :nth-child(7) {
+            grid-row: span 1;
+            aspect-ratio: 1 / 1;
+          }
         }
 
         /* Desktop Layout (Fixed 3x5 Grid) */
