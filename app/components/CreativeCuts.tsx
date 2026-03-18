@@ -316,7 +316,6 @@ export default function CreativeCuts() {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   playsInline
                   preload="metadata"
-                  muted
                   loop
                 />
 
@@ -576,7 +575,7 @@ export default function CreativeCuts() {
             className="relative w-full h-full max-w-7xl mx-auto px-4 flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón anterior */}
+            {/* Botón anterior - descomentar cuando haya más de 1 video
             <button
               onClick={prevVideo}
               className="absolute left-4 md:left-8 z-50 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white p-4 rounded-full transition-all duration-300 hover:scale-110 cursor-pointer group"
@@ -593,30 +592,22 @@ export default function CreativeCuts() {
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
+            */}
 
             {/* Video principal - vertical */}
-            <div className="relative flex items-center justify-center" style={{ maxHeight: '85vh' }}>
-              <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl"
-                style={{
-                  boxShadow: `0 0 120px ${theme.primaryRgba(0.3)}`,
-                  aspectRatio: '9 / 16',
-                  height: '85vh',
-                  maxWidth: '100%',
-                }}
-              >
-                <video
-                  ref={videoRef}
-                  src={videos[currentVideoIndex].src}
-                  className="w-full h-full object-contain bg-black"
-                  controls
-                  playsInline
-                  autoPlay
-                />
-              </div>
+            <div className="relative w-full flex items-center justify-center" style={{ height: '85vh' }}>
+              <video
+                ref={videoRef}
+                src={videos[currentVideoIndex].src}
+                className="max-w-full max-h-full w-auto h-auto object-contain rounded-2xl"
+                controls
+                playsInline
+                autoPlay
+                style={{ boxShadow: `0 0 120px ${theme.primaryRgba(0.3)}` }}
+              />
             </div>
 
-            {/* Botón siguiente */}
+            {/* Botón siguiente - descomentar cuando haya más de 1 video
             <button
               onClick={nextVideo}
               className="absolute right-4 md:right-8 z-50 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white p-4 rounded-full transition-all duration-300 hover:scale-110 cursor-pointer group"
@@ -633,6 +624,7 @@ export default function CreativeCuts() {
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
+            */}
 
             {/* Info y navegación inferior */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center gap-4">
