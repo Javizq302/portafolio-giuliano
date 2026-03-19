@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
 
 const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
@@ -11,6 +11,8 @@ export default function StillFrames() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number; duration: number }>>([]);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   // Generar estrellas al montar
   useEffect(() => {
@@ -134,6 +136,26 @@ export default function StillFrames() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isGalleryOpen, closeGallery, nextImage, prevImage]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipe = 50;
+    if (Math.abs(diff) > minSwipe) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+  };
 
   return (
     <section
@@ -338,6 +360,9 @@ export default function StillFrames() {
         <div
           className="fixed inset-0 z-50 bg-black/98 backdrop-blur-xl flex items-center justify-center"
           onClick={closeGallery}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Estrellas en el modal */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">

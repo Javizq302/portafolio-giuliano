@@ -315,6 +315,7 @@ export default function CreativeCuts() {
                   src={video.src}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   playsInline
+                  muted
                   preload="metadata"
                   loop
                 />
