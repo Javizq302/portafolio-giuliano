@@ -456,7 +456,7 @@ export default function Hero() {
           className={`hero-image relative flex items-center justify-center transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}
         >
-          <div className="relative w-full max-w-md -mt-12">
+          <div className="relative w-full max-w-[220px] sm:max-w-xs lg:max-w-md mx-auto -mt-4 lg:-mt-12">
             {/* Efecto de brillo de fondo */}
             <div className="absolute inset-0 rounded-3xl blur-3xl scale-110" style={{ background: `linear-gradient(135deg, ${theme.primaryRgba(0.1)}, ${theme.secondaryRgba(0.1)}, ${theme.accentRgba(0.1)})` }} />
 
