@@ -11,8 +11,17 @@ export default function StillFrames() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number; duration: number }>>([]);
+  const [isDesktop, setIsDesktop] = useState(true);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
+
+  // Detectar si estamos en desktop o mobile/tablet
+  useEffect(() => {
+    const checkSize = () => setIsDesktop(window.innerWidth >= 1024);
+    checkSize();
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
+  }, []);
 
   // Generar estrellas al montar
   useEffect(() => {
@@ -106,8 +115,23 @@ export default function StillFrames() {
     },
   ];
 
+  // ──────────────────────────────────────────────────────────────────────────
+  // Orden de navegación del lightbox (por ID)
+  // DESKTOP: orden visual del grid de 3 columnas
+  // MOBILE:  orden visual del grid de 2 columnas
+  // Ajusta cada array para cambiar el orden de las flechas/swipe.
+  // ──────────────────────────────────────────────────────────────────────────
+  const LIGHTBOX_ORDER_DESKTOP = [1, 2, 3, 4, 5, 6, 7, 8];
+  const LIGHTBOX_ORDER_MOBILE = [1, 3, 2, 4, 5, 6, 7, 8];
+
+  const galleryImages = (isDesktop ? LIGHTBOX_ORDER_DESKTOP : LIGHTBOX_ORDER_MOBILE)
+    .map((id) => projects.find((p) => p.id === id))
+    .filter(Boolean) as typeof projects;
+
   const openGallery = (index: number) => {
-    setCurrentImageIndex(index);
+    const clickedId = projects[index].id;
+    const lightboxIdx = galleryImages.findIndex((p) => p.id === clickedId);
+    setCurrentImageIndex(lightboxIdx !== -1 ? lightboxIdx : 0);
     setIsGalleryOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -118,12 +142,12 @@ export default function StillFrames() {
   }, []);
 
   const nextImage = useCallback(() => {
-    setCurrentImageIndex((prev) => (prev + 1) % projects.length);
-  }, [projects.length]);
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  }, [galleryImages.length]);
 
   const prevImage = useCallback(() => {
-    setCurrentImageIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  }, [projects.length]);
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  }, [galleryImages.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -428,8 +452,8 @@ export default function StillFrames() {
             {/* Imagen principal */}
             <div className="relative max-w-5xl flex items-center justify-center">
               <Image
-                src={projects[currentImageIndex].src}
-                alt={projects[currentImageIndex].alt || projects[currentImageIndex].title}
+                src={galleryImages[currentImageIndex].src}
+                alt={galleryImages[currentImageIndex].alt || galleryImages[currentImageIndex].title}
                 width={1920}
                 height={1080}
                 quality={100}
@@ -469,16 +493,16 @@ export default function StillFrames() {
               {/* Título de la imagen */}
               <div className="text-center">
                 <span className="text-sm uppercase tracking-widest" style={{ color: theme.accent }}>
-                  {projects[currentImageIndex].category}
+                  {galleryImages[currentImageIndex].category}
                 </span>
                 <h3 className="text-xl font-bold text-white mt-1" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                  {projects[currentImageIndex].title}
+                  {galleryImages[currentImageIndex].title}
                 </h3>
               </div>
 
               {/* Indicadores */}
               <div className="flex items-center gap-3">
-                {projects.map((_, idx) => (
+                {galleryImages.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
