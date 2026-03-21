@@ -14,8 +14,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Giuliano Medina - Portafolio",
-  description: "Portafolio de Giuliano Medina - Filmmaker, Editor, Fotógrafo",
+  title: "Giuliano Medina - Productora",
+  description: "Productora de Giuliano Medina - Filmmaker, Editor, Fotógrafo",
   icons: {
     icon: '/Logo_ICO.ico',
   },
@@ -36,4 +36,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-  }
+}

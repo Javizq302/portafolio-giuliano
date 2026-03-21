@@ -280,7 +280,7 @@ export default function CreativeCuts() {
             className="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
             style={{ fontFamily: 'var(--font-inter)' }}
           >
-            Llégale a lo que planteamos
+            Llégale a lo que planteamos con nuestro trabajo
           </p>
         </div>
 

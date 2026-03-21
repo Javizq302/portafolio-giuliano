@@ -2,9 +2,22 @@
 
 import { getThemeColors } from '../utils/themeUtils';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Footer() {
   const theme = getThemeColors();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
 
   return (
     <footer
@@ -47,7 +60,8 @@ export default function Footer() {
           {/* Enlaces de navegación */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="#inicio"
+              href="/#inicio"
+              onClick={(e) => handleNavClick(e, 'inicio')}
               className="text-sm transition-colors duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -63,7 +77,8 @@ export default function Footer() {
               Inicio
             </a>
             <a
-              href="#still-frames"
+              href="/#still-frames"
+              onClick={(e) => handleNavClick(e, 'still-frames')}
               className="text-sm transition-colors duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -79,7 +94,8 @@ export default function Footer() {
               Still Frames
             </a>
             <a
-              href="#creative-cuts"
+              href="/#creative-cuts"
+              onClick={(e) => handleNavClick(e, 'creative-cuts')}
               className="text-sm transition-colors duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -111,7 +127,8 @@ export default function Footer() {
               Gallery
             </a>
             <a
-              href="#contacto"
+              href="/#contacto"
+              onClick={(e) => handleNavClick(e, 'contacto')}
               className="text-sm transition-colors duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
