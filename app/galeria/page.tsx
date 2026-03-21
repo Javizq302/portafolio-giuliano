@@ -566,9 +566,9 @@ export default function GaleriaPage() {
           </div>
 
           {/* ── Hero Content: Left info + Right preview ── */}
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-16 mb-16">
-            {/* LEFT: Title + Description */}
-            <div className="lg:w-[50%] flex-shrink-0">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 items-start gap-8 lg:gap-16 mb-16">
+            {/* BLOCK 1 (mobile): Title — order-1 mobile, col1 row1 desktop */}
+            <div className="order-1 flex-shrink-0">
               {/* Category number */}
               <div
                 className={`transition-all duration-500 ease-out ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
@@ -623,56 +623,11 @@ export default function GaleriaPage() {
                 />
               </div>
 
-              {/* Description */}
-              <div
-                className={`transition-all duration-500 ease-out delay-150 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
-              >
-                <p
-                  className="text-base md:text-lg text-gray-400 leading-relaxed max-w-lg mb-8"
-                  style={{ fontFamily: 'var(--font-inter)', fontWeight: 300, lineHeight: '1.85' }}
-                >
-                  {cat.descripcion}
-                </p>
-
-                {/* Media count badge */}
-                <div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-500 mb-8"
-                  style={{
-                    background: hexToRgba(cat.color, 0.05),
-                    borderColor: hexToRgba(cat.color, 0.15),
-                  }}
-                >
-                  <span className="text-xs font-semibold" style={{ color: cat.color }}>
-                    {cat.media.length}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-wider text-gray-500">
-                    {cat.media.length === 1 ? 'pieza' : 'piezas'}
-                  </span>
-                </div>
-
-                <div>
-                  <button
-                    onClick={scrollToGallery}
-                    className="group inline-flex items-center gap-3 text-sm font-medium transition-all duration-300 cursor-pointer"
-                    style={{ color: cat.color, fontFamily: 'var(--font-inter)' }}
-                  >
-                    <span>Ver galería completa</span>
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
             </div>
 
-            {/* RIGHT: Preview collage */}
+            {/* RIGHT: Preview collage — order-2 mobile, col2 rows1-2 desktop */}
             <div
-              className={`lg:w-[50%] w-full transition-all duration-600 ease-out ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+              className={`w-full transition-all duration-600 ease-out order-2 lg:row-span-2 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
             >
               <div className={`${collageConfig?.layout === 'vertical'
                 ? 'flex justify-center'
@@ -681,7 +636,7 @@ export default function GaleriaPage() {
                   : collageConfig?.layout === 'default-rotated'
                     ? 'grid grid-cols-2 grid-rows-2'
                     : 'grid grid-cols-2'
-                } gap-3 max-w-lg ml-auto`}>
+                } gap-3 max-w-lg mx-auto lg:ml-auto`}>
                 {previewItems.map((item, idx) => (
                   <div
                     key={`${cat.id}-preview-${idx}`}
@@ -763,6 +718,54 @@ export default function GaleriaPage() {
                     />
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* BLOCK 3 (mobile): Description — order-3 mobile, col1 row2 desktop */}
+            <div className="order-3">
+              <div
+                className={`transition-all duration-500 ease-out delay-150 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
+              >
+                <p
+                  className="text-base md:text-lg text-gray-400 leading-relaxed max-w-lg mb-8"
+                  style={{ fontFamily: 'var(--font-inter)', fontWeight: 300, lineHeight: '1.85' }}
+                >
+                  {cat.descripcion}
+                </p>
+
+                {/* Media count badge */}
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-500 mb-8"
+                  style={{
+                    background: hexToRgba(cat.color, 0.05),
+                    borderColor: hexToRgba(cat.color, 0.15),
+                  }}
+                >
+                  <span className="text-xs font-semibold" style={{ color: cat.color }}>
+                    {cat.media.length}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-500">
+                    {cat.media.length === 1 ? 'pieza' : 'piezas'}
+                  </span>
+                </div>
+
+                <div>
+                  <button
+                    onClick={scrollToGallery}
+                    className="group inline-flex items-center gap-3 text-sm font-medium transition-all duration-300 cursor-pointer"
+                    style={{ color: cat.color, fontFamily: 'var(--font-inter)' }}
+                  >
+                    <span>Ver galería completa</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
