@@ -1012,17 +1012,17 @@ export default function GaleriaPage() {
                                       </div>
                                     </div>
                                     {/* Video badge */}
-                                    <div className="absolute top-3 left-3 pointer-events-none">
+                                    <div className="absolute top-1.5 left-1.5 md:top-3 md:left-3 pointer-events-none">
                                       <div
-                                        className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                        className="flex items-center gap-1 px-1 py-0.5 md:px-2 md:py-1 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
                                         style={{
                                           background: 'rgba(0,0,0,0.5)',
                                           color: 'rgba(255,255,255,0.7)',
                                           border: '1px solid rgba(255,255,255,0.1)',
                                         }}
                                       >
-                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                                        Video
+                                        <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" className="md:w-2 md:h-2"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                        <span className="hidden sm:inline">Video</span>
                                       </div>
                                     </div>
                                     {/* Index number */}
@@ -1220,17 +1220,17 @@ export default function GaleriaPage() {
                                       </div>
                                     </div>
                                     {/* Video badge */}
-                                    <div className="absolute top-3 left-3 pointer-events-none">
+                                    <div className="absolute top-1.5 left-1.5 md:top-3 md:left-3 pointer-events-none">
                                       <div
-                                        className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
+                                        className="flex items-center gap-1 px-1 py-0.5 md:px-2 md:py-1 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm"
                                         style={{
                                           background: 'rgba(0,0,0,0.5)',
                                           color: 'rgba(255,255,255,0.7)',
                                           border: '1px solid rgba(255,255,255,0.1)',
                                         }}
                                       >
-                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                                        Video
+                                        <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" className="md:w-2 md:h-2"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                                        <span className="hidden sm:inline">Video</span>
                                       </div>
                                     </div>
                                   </div>

@@ -175,7 +175,7 @@ export default function Gallery() {
               fontWeight: 300,
             }}
           >
-            Descubre mi universo creativo
+            Descubre un universo creativo
             <br />
             <span style={{ color: accentColor, fontWeight: 400 }}>
               Cada proyecto es una historia única
