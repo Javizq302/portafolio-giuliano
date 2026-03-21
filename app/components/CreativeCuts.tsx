@@ -348,7 +348,7 @@ export default function CreativeCuts() {
                 {/* Icono de play central */}
                 <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                   <div
-                    className="relative bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-full border-2 border-white/50 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                    className="relative bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-full border-2 border-white/50 transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:scale-110"
                   >
                     <svg
                       width="40"
@@ -362,7 +362,7 @@ export default function CreativeCuts() {
 
                     {/* Anillo pulsante */}
                     <div
-                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-40 animate-ping"
+                      className="absolute inset-0 rounded-full opacity-40 lg:opacity-0 lg:group-hover:opacity-40 animate-ping"
                       style={{
                         border: '2px solid white',
                         animationDuration: '2s'

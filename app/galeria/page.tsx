@@ -354,6 +354,7 @@ export default function GaleriaPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const previewVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const carouselTouchStartX = useRef(0);
 
   const cat = categorias[activeSection];
 
@@ -942,6 +943,12 @@ export default function GaleriaPage() {
                                 transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                                 transform: `translateX(calc(-${offset} * (${100 / VISIBLE}% + ${GAP - GAP / VISIBLE}px)))`,
                               }}
+                              onTouchStart={(e) => { carouselTouchStartX.current = e.touches[0].clientX; }}
+                              onTouchEnd={(e) => {
+                                const dx = carouselTouchStartX.current - e.changedTouches[0].clientX;
+                                if (dx > 50) setCarouselOffset(Math.min(maxOffset, offset + 1));
+                                else if (dx < -50) setCarouselOffset(Math.max(0, offset - 1));
+                              }}
                             >
                               {videos.map((video) => {
                                 // Find position in the video-only ordered list
@@ -1038,8 +1045,12 @@ export default function GaleriaPage() {
                             <>
                               {/* Left arrow */}
                               <button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                className="absolute left-0 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
                                 style={{
+                                  top: 0,
+                                  bottom: '60px',
+                                  marginTop: 'auto',
+                                  marginBottom: 'auto',
                                   background: hexToRgba(cat.color, 0.15),
                                   border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
                                   backdropFilter: 'blur(12px)',
@@ -1056,8 +1067,12 @@ export default function GaleriaPage() {
 
                               {/* Right arrow */}
                               <button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                className="absolute right-0 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
                                 style={{
+                                  top: 0,
+                                  bottom: '60px',
+                                  marginTop: 'auto',
+                                  marginBottom: 'auto',
                                   background: hexToRgba(cat.color, 0.15),
                                   border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
                                   backdropFilter: 'blur(12px)',
@@ -1229,8 +1244,12 @@ export default function GaleriaPage() {
                             <>
                               {/* Left arrow */}
                               <button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                className="absolute left-0 -translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
                                 style={{
+                                  top: 0,
+                                  bottom: '60px',
+                                  marginTop: 'auto',
+                                  marginBottom: 'auto',
                                   background: hexToRgba(cat.color, 0.15),
                                   border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
                                   backdropFilter: 'blur(12px)',
@@ -1247,8 +1266,12 @@ export default function GaleriaPage() {
 
                               {/* Right arrow */}
                               <button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
+                                className="absolute right-0 translate-x-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer hover:scale-110"
                                 style={{
+                                  top: 0,
+                                  bottom: '60px',
+                                  marginTop: 'auto',
+                                  marginBottom: 'auto',
                                   background: hexToRgba(cat.color, 0.15),
                                   border: `1px solid ${hexToRgba(cat.color, 0.3)}`,
                                   backdropFilter: 'blur(12px)',

@@ -240,37 +240,23 @@ export default function StillFrames() {
       <style jsx>{`
         .still-frames-collage {
           display: grid;
-          grid-template-columns: repeat(1, 1fr); /* Mobile default */
-          gap: 1rem;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-flow: dense;
+          gap: 0.75rem;
         }
 
         .still-frame-card {
           position: relative;
-          min-height: 300px;
+          min-height: 150px;
         }
 
-        /* Tablet Layout (2 Cols + Auto Flow) */
-        @media (min-width: 640px) and (max-width: 1023px) {
-          .still-frames-collage {
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-flow: dense;
-          }
-          
+        /* Mobile/Tablet overrides (no afecta desktop) */
+        @media (max-width: 1023px) {
           .format-horizontal {
             grid-column: span 2;
           }
-          
-          .format-vertical {
-            grid-row: span 2;
-          }
 
-          /* Item 8: en tablet se vuelve cuadrado para llenar el espacio vacío */
-          .still-frames-collage > :nth-child(8) {
-            grid-column: span 1;
-            aspect-ratio: 1 / 1;
-          }
-
-          /* Items 1, 3, 4, 5: cuadrados en tablet */
+          /* Items cuadrados en mobile/tablet */
           .still-frames-collage > :nth-child(1),
           .still-frames-collage > :nth-child(3),
           .still-frames-collage > :nth-child(4),
@@ -278,6 +264,20 @@ export default function StillFrames() {
           .still-frames-collage > :nth-child(7) {
             grid-row: span 1;
             aspect-ratio: 1 / 1;
+          }
+
+          .still-frames-collage > :nth-child(8) {
+            grid-column: span 1;
+            aspect-ratio: 1 / 1;
+          }
+        }
+
+        @media (min-width: 640px) {
+          .still-frames-collage {
+            gap: 1rem;
+          }
+          .still-frame-card {
+            min-height: 300px;
           }
         }
 
