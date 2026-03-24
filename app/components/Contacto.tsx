@@ -19,7 +19,7 @@ export default function Contacto() {
       gradient: 'linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)',
       hoverGradient: 'linear-gradient(135deg, #FD1D1D 0%, #833AB4 50%, #FCB045 100%)',
       link: 'https://instagram.com/giulimr',
-      description: 'Sígueme y ve mi trabajo diario',
+      description: '',
       color: '#E4405F'
     },
     {
@@ -33,7 +33,7 @@ export default function Contacto() {
       gradient: `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`,
       hoverGradient: `linear-gradient(135deg, ${theme.secondary} 0%, ${theme.primary} 100%)`,
       link: 'mailto:visualideasolutions@gmail.com',
-      description: 'Escríbeme directamente',
+      description: '',
       color: theme.primary
     },
     {
@@ -47,7 +47,7 @@ export default function Contacto() {
       gradient: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
       hoverGradient: 'linear-gradient(135deg, #128C7E 0%, #25D366 100%)',
       link: 'https://wa.me/18295390566',
-      description: 'Chatea conmigo ahora',
+      description: '',
       color: '#25D366'
     }
   ];
@@ -101,20 +101,20 @@ export default function Contacto() {
         </div>
 
         {/* Tarjetas de contacto */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8">
-          {contactMethods.map((method) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          {contactMethods.map((method, index) => (
             <a
               key={method.id}
               href={method.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block"
+              className={`group relative block ${index === 2 ? 'col-span-2 mx-auto w-[calc(50%-0.5rem)] md:col-span-1 md:w-full md:mx-0' : 'md:col-span-1'}`}
               onMouseEnter={() => setHoveredCard(method.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Tarjeta principal */}
               <div
-                className="relative h-full p-8 rounded-3xl transition-all duration-500 transform"
+                className="relative h-full aspect-square p-4 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-500 transform flex items-center justify-center"
                 style={{
                   background: hoveredCard === method.id
                     ? method.hoverGradient
@@ -139,7 +139,7 @@ export default function Contacto() {
                 <div className="relative z-10 flex flex-col items-center text-center">
                   {/* Icono con efecto */}
                   <div
-                    className="mb-6 p-4 rounded-2xl transition-all duration-500 transform"
+                    className="mb-2 md:mb-6 p-1.5 md:p-4 rounded-lg md:rounded-2xl transition-all duration-500 transform"
                     style={{
                       background: hoveredCard === method.id
                         ? method.gradient
@@ -155,7 +155,7 @@ export default function Contacto() {
                         color: hoveredCard === method.id ? '#ffffff' : method.color,
                         filter: hoveredCard === method.id ? 'drop-shadow(0 0 10px rgba(255,255,255,0.5))' : 'none',
                       }}
-                      className="transition-all duration-500"
+                      className="transition-all duration-500 [&_svg]:w-6 [&_svg]:h-6 md:[&_svg]:w-12 md:[&_svg]:h-12"
                     >
                       {method.icon}
                     </div>
@@ -163,7 +163,7 @@ export default function Contacto() {
 
                   {/* Nombre */}
                   <h3
-                    className="text-2xl md:text-3xl font-bold mb-3 transition-all duration-500"
+                    className="text-xs md:text-3xl font-bold mb-3 md:mb-3 transition-all duration-500"
                     style={{
                       fontFamily: 'var(--font-space-grotesk)',
                       color: hoveredCard === method.id ? '#ffffff' : '#ffffff',
@@ -175,7 +175,7 @@ export default function Contacto() {
 
                   {/* Descripción */}
                   <p
-                    className="text-sm md:text-base mb-6 transition-all duration-500"
+                    className="text-[10px] md:text-base mb-1.5 md:mb-6 transition-all duration-500 hidden md:block"
                     style={{
                       fontFamily: 'var(--font-inter)',
                       color: hoveredCard === method.id ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.6)',
@@ -186,7 +186,7 @@ export default function Contacto() {
 
                   {/* Botón de acción */}
                   <div
-                    className="px-6 py-3 rounded-full font-semibold text-sm transition-all duration-500 transform"
+                    className="px-3 py-1 md:px-6 md:py-3 rounded-full font-semibold text-[10px] md:text-sm transition-all duration-500 transform"
                     style={{
                       fontFamily: 'var(--font-inter)',
                       background: hoveredCard === method.id

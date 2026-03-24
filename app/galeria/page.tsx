@@ -351,6 +351,7 @@ export default function GaleriaPage() {
   const [modalGalleryType, setModalGalleryType] = useState<'all' | 'videos' | 'images'>('all');
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [carouselOffset, setCarouselOffset] = useState(0);
+  const [carouselVisible, setCarouselVisible] = useState(3);
   const videoRef = useRef<HTMLVideoElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const previewVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -437,6 +438,18 @@ export default function GaleriaPage() {
   const scrollToGallery = () => {
     galleryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  // ── Responsive carousel visible count ──
+  useEffect(() => {
+    const updateVisible = () => {
+      const w = window.innerWidth;
+      setCarouselVisible(w < 640 ? 2 : w < 1024 ? 2 : 3);
+      setCarouselOffset(0);
+    };
+    updateVisible();
+    window.addEventListener('resize', updateVisible);
+    return () => window.removeEventListener('resize', updateVisible);
+  }, []);
 
   // ── Hide scroll indicator on scroll ──
   useEffect(() => {
@@ -919,13 +932,10 @@ export default function GaleriaPage() {
                 return (
                   <>
                     {videos.length > 0 && (() => {
-                      const VISIBLE = 3;
+                      const VISIBLE = carouselVisible;
                       const GAP = 16;
                       const maxOffset = Math.max(0, videos.length - VISIBLE);
                       const offset = Math.min(carouselOffset, maxOffset);
-                      // Each card width = (100% - gaps) / VISIBLE
-                      // translateX = offset * (cardWidth + gap) as percentage of container
-                      const cardWidthPercent = (100 - (VISIBLE - 1) * GAP / 10) / VISIBLE; // approximate
                       return (
                         <div className="mb-6 relative">
                           {/* Outer wrapper — uses margin/padding trick to give shadow breathing room */}
@@ -1135,7 +1145,7 @@ export default function GaleriaPage() {
                   <>
                     {/* Videos Section — horizontal row */}
                     {videos.length > 0 && (() => {
-                      const VISIBLE = 4;
+                      const VISIBLE = carouselVisible < 3 ? carouselVisible : 4;
                       const GAP = 16;
                       const maxOffset = Math.max(0, videos.length - VISIBLE);
                       const offset = Math.min(carouselOffset, maxOffset);
@@ -1483,7 +1493,7 @@ export default function GaleriaPage() {
                   <>
                     {/* ── TOP: Vertical Video Carousel ── */}
                     {videos.length > 0 && (() => {
-                      const VISIBLE = 4;
+                      const VISIBLE = carouselVisible < 3 ? 3 : 4;
                       const GAP = 16;
                       const maxOffset = Math.max(0, videos.length - VISIBLE);
                       const offset = Math.min(carouselOffset, maxOffset);
