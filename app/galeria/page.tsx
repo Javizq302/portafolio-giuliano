@@ -256,6 +256,9 @@ const GALLERY_EXCLUDE_SRCS = new Set([
 // las flechas de navegación seguirán este orden de IDs.
 // ──────────────────────────────────────────────────────────────────────────────
 const COLORLAB_GALLERY_ORDER: number[] = [1, 5, 9, 2, 6, 10, 3, 7, 11, 4, 8, 12, 13, 14, 15, 16];
+// Orden de IDs para el grid de Color Lab en mobile (2 columnas).
+// Cambia este array para reordenar las fotos en responsive.
+const COLORLAB_MOBILE_ORDER: number[] = [1, 2, 5, 6, 9, 10, 4, 3, 8, 7, 12, 11, 13, 14, 15, 16];
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Music Visuals — orden personalizado para galerías separadas (videos / imágenes)
@@ -914,19 +917,25 @@ export default function GaleriaPage() {
             <div
               className={`grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}
             >
-              {cat.media.map((item, idx) => {
-                // Find the index in the reordered modalMedia so the lightbox starts at the right position
-                const modalIdx = modalMedia.findIndex((m) => m.id === item.id);
-                return (
-                  <GalleryCard
-                    key={`${cat.id}-${item.id}`}
-                    item={item}
-                    catColor={cat.color}
-                    index={idx}
-                    onClick={() => openModal(modalIdx !== -1 ? modalIdx : idx)}
-                  />
-                );
-              })}
+              {(() => {
+                const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                const byId = new Map(cat.media.map((m) => [m.id, m]));
+                const orderedMedia = isMobile
+                  ? COLORLAB_MOBILE_ORDER.filter((id) => byId.has(id)).map((id) => byId.get(id)!)
+                  : cat.media;
+                return orderedMedia.map((item, idx) => {
+                  const modalIdx = modalMedia.findIndex((m) => m.id === item.id);
+                  return (
+                    <GalleryCard
+                      key={`${cat.id}-${item.id}`}
+                      item={item}
+                      catColor={cat.color}
+                      index={idx}
+                      onClick={() => openModal(modalIdx !== -1 ? modalIdx : idx)}
+                    />
+                  );
+                });
+              })()}
             </div>
           ) : cat.id === 'musicvisuals' ? (
             <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
