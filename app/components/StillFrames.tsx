@@ -59,7 +59,7 @@ export default function StillFrames() {
     },
     {
       id: 2,
-      src: `${CDN}/images/stillframes/still_frames_1h.webp`,
+      src: `${CDN}/images/stillframes/still_frames_1h.png`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -67,7 +67,7 @@ export default function StillFrames() {
     },
     {
       id: 3,
-      src: `${CDN}/images/stillframes/still_frames_2ver.webp`,
+      src: `${CDN}/images/stillframes/still_frames_2ver.jpg`,
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -91,7 +91,7 @@ export default function StillFrames() {
     },
     {
       id: 6,
-      src: `${CDN}/images/stillframes/still_frames_2h.webp`, // Reusing
+      src: `${CDN}/images/stillframes/still_frames_2h.png`, // Reusing
       alt: ' ',
       title: ' ',
       category: ' ',
@@ -107,7 +107,7 @@ export default function StillFrames() {
     },
     {
       id: 8,
-      src: `${CDN}/images/stillframes/still_frames_3h.webp`, // Reusing
+      src: `${CDN}/images/stillframes/still_frames_3h.png`, // Reusing
       alt: ' ',
       title: ' ',
       category: ' ',
