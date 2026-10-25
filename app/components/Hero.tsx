@@ -344,7 +344,7 @@ export default function Hero() {
                   className="text-xl md:text-2xl lg:text-3xl text-gray-300 uppercase font-light"
                   style={{ fontFamily: 'var(--font-inter)', letterSpacing: '0.03em' }}
                 >
-                  Productora
+                  Colorista & Editor
                 </p>
                 <div className="h-px w-16" style={{ background: `linear-gradient(to left, transparent, ${theme.primary}, ${theme.secondary})` }} />
               </div>
@@ -368,7 +368,7 @@ export default function Hero() {
                   color: theme.primaryRgba(0.8),
                 }}
               >
-                Visual Storyteller
+                Colorist
               </div>
               <div
                 className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
@@ -379,7 +379,7 @@ export default function Hero() {
                   color: theme.secondaryRgba(0.8),
                 }}
               >
-                Videographer
+                Editor
               </div>
               <div
                 className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
@@ -401,7 +401,7 @@ export default function Hero() {
                   color: theme.quaternaryRgba(0.8),
                 }}
               >
-                Color Grader
+                Visual Storyteller
               </div>
             </div>
           </div>
