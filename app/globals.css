@@ -10,65 +10,7 @@
   font-feature-settings: normal;
 }
 
-/* Hero title candidates */
-@font-face {
-  font-family: 'Arthemis';
-  src: url('/fonts/Arthemis.woff') format('woff'),
-       url('/fonts/Arthemis.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Deadhead';
-  src: url('/fonts/Deadhead.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DeadheadRough';
-  src: url('/fonts/DeadheadRough.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DeadheadScript';
-  src: url('/fonts/DeadheadScript.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DeadheadScriptItalic';
-  src: url('/fonts/DeadheadScriptItalic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Flisker';
-  src: url('/fonts/Flisker.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Flogest';
-  src: url('/fonts/Flogest.woff2') format('woff2'),
-       url('/fonts/Flogest.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Hero title font */
 @font-face {
   font-family: 'Hamer';
   src: url('/fonts/Hamer.woff2') format('woff2'),
@@ -78,16 +20,7 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Urban_Latte';
-  src: url('/fonts/UrbanLatte.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  /* Hero title font: replace 'Froople' with any font-family declared above */
   --font-hero-title: 'Hamer', Arial, sans-serif;
 
   /* Valores por defecto - se sobrescriben por ThemeProvider */
