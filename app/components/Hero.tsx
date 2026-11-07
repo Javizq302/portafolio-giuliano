@@ -310,22 +310,22 @@ export default function Hero() {
             <div className="space-y-6">
               <h1
                 className="hero-title font-bold leading-tight flex flex-col"
-                style={{ fontFamily: "Froople, Arial, sans-serif" }}
+                style={{ fontFamily: "var(--font-hero-title)" }}
               >
                 <span
                   className="text-white block"
                   style={{
-                    fontFamily: "Froople, Arial, sans-serif",
+                    fontFamily: "var(--font-hero-title)",
                     letterSpacing: '0.04em',
                     fontSize: 'clamp(2.5rem, 5vw, 6rem)',
                   }}
                 >
-                  GIULIANO
+                  Giuliano
                 </span>
                 <span
                   className="hero-medina block relative"
                   style={{
-                    fontFamily: "Froople, Arial, sans-serif",
+                    fontFamily: "var(--font-hero-title)",
                     color: '#ED961A',
                     letterSpacing: '0.04em',
                     fontSize: 'clamp(2.5rem, 5vw, 6rem)',
@@ -334,7 +334,7 @@ export default function Hero() {
                     marginTop: 'clamp(-0.9rem, -2vw, -2rem)',
                   }}
                 >
-                  MEDINA
+                  Medina
                 </span>
               </h1>
 
