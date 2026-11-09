@@ -409,7 +409,7 @@ export default function Hero() {
           {/* Botones de acción */}
           <div className="hero-buttons flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
             <a
-              href="#creative-cuts"
+              href="#latest-work"
               className="px-8 py-4 font-semibold rounded-full transition-all duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -466,7 +466,7 @@ export default function Hero() {
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden z-10">
                 <div className="absolute inset-0" style={{ top: '-15%', bottom: '0' }}>
                   <Image
-                    src="/images/hero/FotoGiulianoSinFondoGrain.webp"
+                    src="/images/hero/FotoGiulianoConFondo.webp"
                     alt="Giuliano Medina - Filmmaker"
                     fill
                     className="object-cover"
@@ -497,7 +497,7 @@ export default function Hero() {
                 <div className="relative w-full h-full" style={{ aspectRatio: '3/4' }}>
                   <div className="absolute inset-0" style={{ top: '-15%', bottom: '0' }}>
                     <Image
-                      src="/images/hero/FotoGiulianoSinFondoGrain.webp"
+                      src="/images/hero/FotoGiulianoConFondo.webp"
                       alt=""
                       fill
                       className="object-cover"
@@ -559,7 +559,7 @@ export default function Hero() {
         }}
       >
         <a
-          href="#creative-cuts"
+          href="#latest-work"
           className="flex flex-col items-center gap-2 group cursor-pointer"
           style={{ textDecoration: 'none' }}
         >
