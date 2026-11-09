@@ -4,8 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
 
 const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
-// Timestamp (seconds) shown as the card's still frame before hover
-const PREVIEW_TIME = 0.1;
 
 export default function LatestWork() {
   const theme = getThemeColors();
@@ -29,12 +27,15 @@ export default function LatestWork() {
     {
       id: 1,
       src: `${CDN}/videos/latestwork/video-1-latestwork.mp4`,
+      // Still frame (seconds) shown on the card before hover
+      posterTime: 45,
       title: ' ',
       category: ' ',
     },
     {
       id: 2,
       src: `${CDN}/videos/latestwork/video-2-latestwork.mp4`,
+      posterTime: 2,
       title: ' ',
       category: ' ',
     },
@@ -175,7 +176,7 @@ export default function LatestWork() {
     const video = previewRefs.current[index];
     if (video) {
       video.pause();
-      video.currentTime = PREVIEW_TIME;
+      video.currentTime = videos[index].posterTime;
     }
   };
 
@@ -316,7 +317,7 @@ export default function LatestWork() {
                 {/* Video preview */}
                 <video
                   ref={(el) => { previewRefs.current[index] = el; }}
-                  src={`${video.src}#t=${PREVIEW_TIME}`}
+                  src={`${video.src}#t=${video.posterTime}`}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   playsInline
                   muted
