@@ -27,13 +27,13 @@ export default function LatestWork() {
   const videos = [
     {
       id: 1,
-      src: `${CDN}/videos/video-1-latestwork.mp4`,
+      src: `${CDN}/videos/latestwork/video-1-latestwork.mp4`,
       title: ' ',
       category: ' ',
     },
     {
       id: 2,
-      src: `${CDN}/videos/video-2-latestwork.mp4`,
+      src: `${CDN}/videos/latestwork/video-2-latestwork.mp4`,
       title: ' ',
       category: ' ',
     },
