@@ -531,8 +531,19 @@ export default function Hero() {
                     background: '#111827', // gray-900 - mismo que el contenedor
                     position: 'relative',
                     zIndex: -2,
+                    overflow: 'hidden',
                   }}
-                />
+                >
+                  {/* Neutral film grain - tune opacity (0.08 subtle, 0.25 strong) and baseFrequency for grain size */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      opacity: 0.12,
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.3 0 0 0 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
+                      backgroundSize: '300px 300px',
+                    }}
+                  />
+                </div>
               </div>
             </div>
 
