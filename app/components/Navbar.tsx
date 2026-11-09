@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 export default function Navbar() {
   const sections = [
     'Inicio',
-    'Creative Cuts',
+    'Latest Work',
     'Still Frames',
     'Gallery',
     'Contacto',
@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const sectionIds = [
     'inicio',
-    'creative-cuts',
+    'latest-work',
     'still-frames',
     'works',
     'contacto',

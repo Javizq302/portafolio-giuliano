@@ -94,8 +94,8 @@ export default function Footer() {
               Still Frames
             </a>
             <a
-              href="/#creative-cuts"
-              onClick={(e) => handleNavClick(e, 'creative-cuts')}
+              href="/#latest-work"
+              onClick={(e) => handleNavClick(e, 'latest-work')}
               className="text-sm transition-colors duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -108,7 +108,7 @@ export default function Footer() {
                 e.currentTarget.style.color = '#94a3b8';
               }}
             >
-              Creative Cuts
+              Latest Work
             </a>
             <a
               href="/galeria"

@@ -2,7 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Brands from './components/Brands';
 import StillFrames from './components/StillFrames';
-import CreativeCuts from './components/CreativeCuts';
+import LatestWork from './components/LatestWork';
 import CreativeCuts2 from './components/CreativeCuts2';
 import Gallery from './components/Gallery';
 import Contacto from './components/Contacto';
@@ -19,7 +19,7 @@ export default function Home() {
       <main className="w-full">
         <Hero />
         <Brands />
-        <CreativeCuts />
+        <LatestWork />
         <StillFrames />
         <Gallery />
         <Contacto />
