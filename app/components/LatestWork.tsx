@@ -4,12 +4,13 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
 
 const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
+// Timestamp (seconds) shown as the card's still frame before hover
+const PREVIEW_TIME = 0.1;
 
 export default function LatestWork() {
   const theme = getThemeColors();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number; duration: number }>>([]);
   const [shootingStars, setShootingStars] = useState<Array<{ id: number; x: number; y: number; angle: number; duration: number; length: number; curvature: number }>>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -164,7 +165,6 @@ export default function LatestWork() {
   }, [currentVideoIndex, isGalleryOpen]);
 
   const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
     const video = previewRefs.current[index];
     if (video) {
       video.play().catch(() => { });
@@ -172,11 +172,10 @@ export default function LatestWork() {
   };
 
   const handleMouseLeave = (index: number) => {
-    setHoveredIndex(null);
     const video = previewRefs.current[index];
     if (video) {
       video.pause();
-      video.currentTime = 0;
+      video.currentTime = PREVIEW_TIME;
     }
   };
 
@@ -317,21 +316,12 @@ export default function LatestWork() {
                 {/* Video preview */}
                 <video
                   ref={(el) => { previewRefs.current[index] = el; }}
-                  src={video.src}
+                  src={`${video.src}#t=${PREVIEW_TIME}`}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   playsInline
                   muted
                   preload="metadata"
                   loop
-                />
-
-                {/* Portada negra que se desvanece en hover */}
-                <div
-                  className="absolute inset-0 z-[5] transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    backgroundColor: '#000',
-                    opacity: hoveredIndex === index ? 0 : 1,
-                  }}
                 />
 
                 {/* Overlay gradiente */}
