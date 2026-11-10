@@ -5,6 +5,13 @@ import { getThemeColors } from '../utils/themeUtils';
 
 const CDN = process.env.NEXT_PUBLIC_BUNNY_CDN_URL ?? '';
 
+// Frame rate of the Latest Work videos (23.976 fps)
+const VIDEO_FPS = 24000 / 1001;
+
+// Converts an editor timecode (seconds + frame) to seconds.
+// Adds half a frame so the browser lands inside the target frame instead of on its edge.
+const timecode = (seconds: number, frame = 0, fps = VIDEO_FPS) => seconds + (frame + 0.5) / fps;
+
 export default function LatestWork() {
   const theme = getThemeColors();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -27,15 +34,15 @@ export default function LatestWork() {
     {
       id: 1,
       src: `${CDN}/videos/latestwork/video-1-latestwork.mp4`,
-      // Still frame (seconds) shown on the card before hover
-      posterTime: 44,
+      // Still frame shown on the card before hover: timecode(seconds, frame)
+      posterTime: timecode(44, 15),
       title: ' ',
       category: ' ',
     },
     {
       id: 2,
       src: `${CDN}/videos/latestwork/video-2-latestwork.mp4`,
-      posterTime: 2,
+      posterTime: timecode(2),
       title: ' ',
       category: ' ',
     },
