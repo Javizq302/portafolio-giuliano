@@ -20,8 +20,37 @@
   font-display: swap;
 }
 
+/* Hero title candidates - switch by editing --font-hero-title in :root below */
+@font-face {
+  font-family: 'Avaleigh';
+  src: url('/fonts/Avaleigh.otf') format('opentype');
+  /* Full weight range: the file is used as-is for font-bold, no synthetic (faux) bold */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CimoOnes';
+  src: url('/fonts/CimoOnes.otf') format('opentype');
+  /* Full weight range: the file is used as-is for font-bold, no synthetic (faux) bold */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Theater';
+  src: url('/fonts/Theater.otf') format('opentype');
+  /* Full weight range: the file is used as-is for font-bold, no synthetic (faux) bold */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-hero-title: 'Hamer', Arial, sans-serif;
+  /* Hero title font. Options: 'Hamer' | 'Avaleigh' | 'CimoOnes' | 'Theater' */
+  --font-hero-title: 'CimoOnes', Arial, sans-serif;
 
   /* Valores por defecto - se sobrescriben por ThemeProvider */
   --background: #0f172a;
