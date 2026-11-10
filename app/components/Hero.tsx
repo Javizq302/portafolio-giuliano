@@ -410,6 +410,24 @@ export default function Hero() {
           <div className="hero-buttons flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
             <a
               href="#latest-work"
+              className="px-8 py-4 border-2 rounded-full transition-all duration-300 backdrop-blur-sm"
+              style={{
+                fontFamily: 'var(--font-inter)',
+                borderColor: theme.primaryRgba(0.5),
+                color: '#ffffff',
+                backgroundColor: 'transparent',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = theme.primaryRgba(0.2);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
+            >
+              Ver Trabajos
+            </a>
+            <a
+              href="#contacto"
               className="px-8 py-4 font-semibold rounded-full transition-all duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -426,24 +444,6 @@ export default function Hero() {
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'transparent';
                 e.currentTarget.style.background = 'rgba(247, 152, 27, 0.87)';
-              }}
-            >
-              Ver Trabajos
-            </a>
-            <a
-              href="#contacto"
-              className="px-8 py-4 border-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-              style={{
-                fontFamily: 'var(--font-inter)',
-                borderColor: theme.primaryRgba(0.5),
-                color: '#ffffff',
-                backgroundColor: 'transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = theme.primaryRgba(0.2);
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
               Contacto
@@ -534,6 +534,18 @@ export default function Hero() {
                     overflow: 'hidden',
                   }}
                 >
+                  {/* Backlight halo behind the subject: blue on the left, orange on the right
+                      (card border gradient reversed). Tune alpha and ellipse size to taste. */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: [
+                        'radial-gradient(ellipse 60% 40% at 35% 35%, rgba(59, 130, 246, 0.45) 0%, transparent 70%)',
+                        'radial-gradient(ellipse 60% 40% at 70% 50%, rgba(249, 115, 22, 0.50) 0%, transparent 70%)',
+                      ].join(', '),
+                      filter: 'blur(20px)',
+                    }}
+                  />
                   {/* Neutral film grain - tune opacity (0.08 subtle, 0.25 strong) and baseFrequency for grain size */}
                   <div
                     className="absolute inset-0"
