@@ -28,7 +28,7 @@ export default function LatestWork() {
       id: 1,
       src: `${CDN}/videos/latestwork/video-1-latestwork.mp4`,
       // Still frame (seconds) shown on the card before hover
-      posterTime: 45,
+      posterTime: 44,
       title: ' ',
       category: ' ',
     },
