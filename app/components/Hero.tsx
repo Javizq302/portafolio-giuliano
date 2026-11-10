@@ -313,7 +313,7 @@ export default function Hero() {
                 style={{ fontFamily: "var(--font-hero-title)" }}
               >
                 <span
-                  className="text-white block"
+                  className="hero-giuliano text-white block"
                   style={{
                     fontFamily: "var(--font-hero-title)",
                     letterSpacing: '0.04em',
@@ -650,8 +650,14 @@ export default function Hero() {
           .hero-title {
             align-items: center;
           }
+          /* Staggered name like desktop: Giuliano nudged left, Medina nudged right.
+             Uses em so the offset scales with the font size. */
+          .hero-giuliano {
+            transform: translateX(-0.6em);
+          }
           .hero-medina {
             padding-left: 0 !important;
+            transform: translateX(0.6em);
           }
           .hero-image {
             order: 2;
