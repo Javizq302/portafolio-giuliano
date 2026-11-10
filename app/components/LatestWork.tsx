@@ -288,12 +288,6 @@ export default function LatestWork() {
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/30" />
             </div>
           </div>
-          <p
-            className="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
-            style={{ fontFamily: 'var(--font-inter)' }}
-          >
-            Llégale a lo que planteamos con nuestro trabajo
-          </p>
         </div>
 
         {/* Grid de 2 videos cuadrados */}
