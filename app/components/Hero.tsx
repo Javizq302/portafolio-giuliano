@@ -3,6 +3,12 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { getThemeColors } from '../utils/themeUtils';
+import HeroPillar from './effects/HeroPillar';
+
+// Same dark orange gradient as the "Medina" title.
+// `border-box` makes the gradient span the transparent 2px border; otherwise it tiles
+// under the border and shows thin wrong-colored strips at the top and bottom edges.
+const CONTACT_BUTTON_BG = 'linear-gradient(180deg, #E08A14 20%, #C46F0A 60%, #8A4806 100%) border-box';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,7 +54,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      className="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Fondo con gradientes sutiles */}
       <div className="absolute inset-0">
@@ -57,6 +63,23 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background: `linear-gradient(135deg, var(--color-background) 0%, var(--color-background-secondary) 30%, var(--color-background-tertiary) 60%, var(--color-background-secondary) 100%)`,
+          }}
+        />
+
+        {/* Darkens the theme blue only in the hero (sits under the pillar so the light stays bright).
+            Tune the alpha: 0 = original blue, 0.7 = almost black. */}
+        <div className="absolute inset-0" style={{ background: 'rgba(2, 4, 10, 0.45)' }} />
+
+        {/* Animated light pillar (desktop) / static glow (mobile, reduced motion) */}
+        <HeroPillar />
+
+        {/* Legibility scrim: horizontal fade from the left edge so the pillar does not wash out
+            the text. Many eased stops = no visible edge. Tune the first alpha (0.7) for strength
+            and the last stop (70%) for how far it reaches. */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(90deg, rgba(4, 7, 15, 0.7) 0%, rgba(4, 7, 15, 0.62) 18%, rgba(4, 7, 15, 0.48) 32%, rgba(4, 7, 15, 0.3) 44%, rgba(4, 7, 15, 0.14) 56%, rgba(4, 7, 15, 0.04) 64%, transparent 70%)',
           }}
         />
 
@@ -316,8 +339,20 @@ export default function Hero() {
                   className="hero-giuliano text-white block"
                   style={{
                     fontFamily: "var(--font-hero-title)",
-                    letterSpacing: '0.04em',
+                    letterSpacing: '0.02em',
                     fontSize: 'clamp(2.5rem, 5vw, 6rem)',
+                    // Depth: top-lit vertical gradient fill (white -> light gray).
+                    backgroundImage: 'linear-gradient(180deg, #ffffff 30%, #c7ccd4 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    // Glow + drop shadow. drop-shadow (not text-shadow) because the fill is transparent:
+                    // text-shadow would show through the letters. Last layer = dark shadow below.
+                    filter: [
+                      'drop-shadow(0 0 3px rgba(255, 255, 255, 0.45))',
+                      'drop-shadow(0 0 9px rgba(255, 255, 255, 0.25))',
+                      'drop-shadow(0 8px 10px rgba(0, 0, 0, 0.55))',
+                    ].join(' '),
                   }}
                 >
                   Giuliano
@@ -327,9 +362,19 @@ export default function Hero() {
                   style={{
                     fontFamily: "var(--font-hero-title)",
                     color: '#ED961A',
-                    letterSpacing: '0.04em',
+                    letterSpacing: '0.02em',
                     fontSize: 'clamp(2.5rem, 5vw, 6rem)',
-                    textShadow: '0 0 3px rgba(237, 150, 26, 0.2), 0 0 9px rgba(237, 150, 26, 0.1), 0 0 12px rgba(237, 150, 26, 0.1)',
+                    // Depth: top-lit vertical gradient fill (light orange -> brand orange -> dark orange).
+                    backgroundImage: 'linear-gradient(180deg, #E08A14 20%, #C46F0A 60%, #8A4806 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    // Glow + drop shadow (see Giuliano for why drop-shadow instead of text-shadow).
+                    filter: [
+                      'drop-shadow(0 0 3px rgba(237, 150, 26, 0.55))',
+                      'drop-shadow(0 0 9px rgba(237, 150, 26, 0.35))',
+                      'drop-shadow(0 8px 10px rgba(0, 0, 0, 0.55))',
+                    ].join(' '),
                     paddingLeft: 'clamp(3rem, 6vw, 8rem)',
                     marginTop: 'clamp(-0.9rem, -2vw, -2rem)',
                   }}
@@ -341,7 +386,7 @@ export default function Hero() {
               <div className="flex items-center justify-center lg:justify-start gap-4">
                 <div className="h-px w-16" style={{ background: `linear-gradient(to right, transparent, ${theme.primary}, ${theme.secondary})` }} />
                 <p
-                  className="text-xl md:text-2xl lg:text-3xl text-gray-300 uppercase font-light"
+                  className="hero-role text-xl md:text-2xl lg:text-3xl text-gray-300 uppercase font-light"
                   style={{ fontFamily: 'var(--font-inter)', letterSpacing: '0.03em' }}
                 >
                   Colorista & Editor
@@ -349,16 +394,16 @@ export default function Hero() {
                 <div className="h-px w-16" style={{ background: `linear-gradient(to left, transparent, ${theme.primary}, ${theme.secondary})` }} />
               </div>
             </div>
-
+            {/*
             <p
               className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               style={{ fontFamily: 'var(--font-inter)' }}
             >
               Disfrutamos el proceso de convertir ideas en imágenes reales, sólidas y funcionales.
             </p>
-
+            */}
             {/* Badge sutil con información adicional */}
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start items-center pt-2">
+            <div className="hero-badges flex flex-wrap gap-3 justify-center lg:justify-start items-center pt-2">
               <div
                 className="px-4 py-2 rounded-full text-sm backdrop-blur-sm border"
                 style={{
@@ -431,19 +476,19 @@ export default function Hero() {
               className="px-8 py-4 font-semibold rounded-full transition-all duration-300"
               style={{
                 fontFamily: 'var(--font-inter)',
-                background: 'rgba(247, 152, 27, 0.87)',
-                boxShadow: '0 5px 20px rgba(220, 190, 150, 0.2)',
+                background: CONTACT_BUTTON_BG,
+                boxShadow: '0 5px 20px rgba(196, 111, 10, 0.25)',
                 color: '#000000',
                 backdropFilter: 'blur(10px)',
                 border: '2px solid transparent',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(247, 152, 27, 0.87)';
-                e.currentTarget.style.background = 'rgba(215, 145, 55, 0.5)';
+                e.currentTarget.style.borderColor = '#E08A14';
+                e.currentTarget.style.background = 'rgba(196, 111, 10, 0.5)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'transparent';
-                e.currentTarget.style.background = 'rgba(247, 152, 27, 0.87)';
+                e.currentTarget.style.background = CONTACT_BUTTON_BG;
               }}
             >
               Contacto
@@ -575,7 +620,7 @@ export default function Hero() {
 
       {/* Indicador de scroll - esquina inferior derecha */}
       <div
-        className={`fixed bottom-8 right-8 transition-opacity duration-700 z-50 ${isLoaded && showScrollIndicator ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`hero-scroll-indicator fixed bottom-8 right-8 transition-opacity duration-700 z-50 ${isLoaded && showScrollIndicator ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         style={{
           willChange: 'opacity',
@@ -649,7 +694,7 @@ export default function Hero() {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
             padding-top: 7rem;
-            gap: 2rem;
+            gap: 1.75rem;
             grid-template-columns: 1fr !important;
           }
           .hero-text {
@@ -664,6 +709,11 @@ export default function Hero() {
           }
           /* Staggered name like desktop: Giuliano nudged left, Medina nudged right.
              Uses em so the offset scales with the font size. */
+          /* Bigger name on mobile (overrides the inline desktop font-size) */
+          .hero-giuliano,
+          .hero-medina {
+            font-size: clamp(3.5rem, 15vw, 7rem) !important;
+          }
           .hero-giuliano {
             transform: translateX(-0.6em);
           }
@@ -671,12 +721,44 @@ export default function Hero() {
             padding-left: 0 !important;
             transform: translateX(0.6em);
           }
+          /* Smaller role subtitle on mobile */
+          .hero-role {
+            font-size: 1rem !important;
+          }
+          /* Hide the scroll indicator on mobile */
+          .hero-scroll-indicator {
+            display: none !important;
+          }
+          /* Hide the photo card on mobile */
           .hero-image {
-            order: 2;
+            display: none !important;
           }
           .hero-buttons {
             order: 3;
             justify-content: center;
+            padding-top: 0 !important;
+          }
+          /* Hero only as tall as its content on mobile (no full-screen gap above the buttons) */
+          .hero-section {
+            min-height: auto !important;
+          }
+          .hero-main {
+            min-height: auto !important;
+            align-content: start;
+            padding-bottom: 4rem !important;
+          }
+          /* Badges in a tidy 2x2 grid with equal-width pills */
+          .hero-badges {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.6rem;
+            max-width: 22rem;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .hero-badges > div {
+            text-align: center;
+            white-space: nowrap;
           }
         }
       `}</style>
