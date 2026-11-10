@@ -35,7 +35,7 @@ export default function LatestWork() {
       id: 1,
       src: `${CDN}/videos/latestwork/video-1-latestwork.mp4`,
       // Still frame shown on the card before hover: timecode(seconds, frame)
-      posterTime: timecode(44, 15),
+      posterTime: timecode(44, 13),
       title: ' ',
       category: ' ',
     },
